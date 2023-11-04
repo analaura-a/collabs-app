@@ -1,0 +1,20 @@
+{
+  "name": "primer-parcial",
+  "version": "1.0.0",
+  "description": "Primer parcial de Aplicaciones Hibridas",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./app/server.js",
+    "dev": "nodemon ./app/server.js"
+  },
+  "author": "Ana Almiron y Brisa Marca",
+  "license": "ISC",
+  "dependencies": {
+    "express": "4.18.2",
+    "mongodb": "6.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "3.0.1"
+  }
+}
