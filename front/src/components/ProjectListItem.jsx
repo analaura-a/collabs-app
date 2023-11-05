@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { PropTypes } from "prop-types";
 
-const ProjectListItem = ({ producto }) => {
+const ProjectListItem = ({ project }) => {
 
-    const { _id, name} = producto;
+    const { _id, name} = project;
 
     return (
 

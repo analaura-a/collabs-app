@@ -3,15 +3,15 @@ import ProjectList from '../components/ProjectList'
 
 const ExplorePage = () => {
 
-    const [productos, setProductos] = useState([])
+    const [projects, setProjects] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:3333/api/projects')
             .then((res) => res.json())
-            .then((data) =>setProductos(data));
+            .then((data) => setProjects(data));
     }, [])
 
-    useEffect(() => { }, [productos])
+    useEffect(() => { }, [projects])
 
 
 
@@ -19,7 +19,7 @@ const ExplorePage = () => {
     return <>
         <h1 className="mt-5">Descubre oportunidades de colaboración</h1>
 
-        <ProjectList productosRecibidos={productos} />
+        <ProjectList projectsReceived={projects} />
 
     </>
 };

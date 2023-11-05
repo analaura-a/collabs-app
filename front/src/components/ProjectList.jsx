@@ -3,24 +3,33 @@ import { PropTypes } from "prop-types";
 
 import ProjectListItem from "./ProjectListItem";
 
-const ProjectList = ({ productosRecibidos }) => {
+const ProjectList = ({ projectsReceived }) => {
 
 
-    const [productos, setProductos] = React.useState(productosRecibidos)
+    const [projects, setProjects] = React.useState(projectsReceived)
 
     const onChangeFilter = (event) => {
 
         const filterText = event.target.value.toLowerCase();
         console.log(filterText)
 
-        const filtrado = productos.filter(producto => producto.name.toLowerCase().includes(filterText))
-        setProductos(filtrado)
-        console.log(filtrado)
+        if (filterText !== '') {
+
+            const filtrado = projects.filter(project => project.name.toLowerCase().includes(filterText))
+            setProjects(filtrado)
+            console.log(filtrado)
+
+        } else {
+            setProjects(projectsReceived)
+        }
+
+
     }
 
     useEffect(() => {
-        setProductos(productosRecibidos)
-    }, [productosRecibidos])
+        setProjects(projectsReceived)
+    }, [projectsReceived])
+
 
     return (
         <>
@@ -36,7 +45,7 @@ const ProjectList = ({ productosRecibidos }) => {
 
             <ul className="list-unstyled row row-cols-1 row-cols-md-3 g-4 mt-5">
                 {
-                    productos.map(producto => <ProjectListItem key={producto._id} producto={producto} />)
+                    projects.map(project => <ProjectListItem key={project._id} project={project} />)
                 }
 
             </ul>
