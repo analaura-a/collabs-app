@@ -1,12 +1,14 @@
 import express from "express";
 import ApiProjectsRoute from '../api/routes/projects.api.routes.js'
 import ApiUsersRoute from '../api/routes/users.api.routes.js'
+import cors from 'cors'
 
 const app = express(); //El servidor
 app.listen(3333);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 
 app.use("/", express.static("public"));
 

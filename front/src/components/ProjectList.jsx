@@ -13,10 +13,14 @@ const ProjectList = ({ productosRecibidos }) => {
         const filterText = event.target.value.toLowerCase();
         console.log(filterText)
 
-        const filtrado = productos.filter(producto => producto.nombre.toLowerCase().includes(filterText))
+        const filtrado = productos.filter(producto => producto.name.toLowerCase().includes(filterText))
         setProductos(filtrado)
         console.log(filtrado)
     }
+
+    useEffect(() => {
+        setProductos(productosRecibidos)
+    }, [productosRecibidos])
 
     return (
         <>
@@ -32,7 +36,7 @@ const ProjectList = ({ productosRecibidos }) => {
 
             <ul className="list-unstyled row row-cols-1 row-cols-md-3 g-4 mt-5">
                 {
-                    productos.map(producto => <ProjectListItem key={producto.id} producto={producto} />)
+                    productos.map(producto => <ProjectListItem key={producto._id} producto={producto} />)
                 }
 
             </ul>
