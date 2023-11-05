@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { PropTypes } from "prop-types";
 
-import ProjectListItem from "./ProjectListItem";
+import UserListItem from "./UserListItem";
 
-const ProjectList = () => {
+const UserList = () => {
 
     return (
         <>
@@ -11,20 +11,19 @@ const ProjectList = () => {
                 <input
                     className="form-control form-control-lg mt-5"
                     type="text"
-                    placeholder="Buscar proyectos de..."
+                    placeholder="Buscar personas..."
                     aria-label=".form-control-lg example"
                 />
             </form>
 
             <ul className="list-unstyled row row-cols-1 row-cols-md-3 g-4 mt-5">
-                <ProjectListItem />
-                <ProjectListItem />
-                <ProjectListItem />
-                <ProjectListItem />
-                <ProjectListItem />
+                <UserListItem />
+                <UserListItem />
+                <UserListItem />
+                <UserListItem />
             </ul>
         </>
     );
 };
 
-export default ProjectList;
+export default UserList;

@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App.jsx'
 import ExplorePage from './pages/ExplorePage.jsx'
+import ExploreUsersPage from './pages/ExploreUsersPage.jsx'
 import Error404Page from './pages/Error404Page.jsx'
 
 const routes = createBrowserRouter([
@@ -14,13 +15,13 @@ const routes = createBrowserRouter([
     errorElement: <Error404Page />,
     children: [
       {
-        path: "/explore",
+        path: "/explorar",
         element: <ExplorePage />,
       },
-      // {
-      //   path: "/explore",
-      //   element: < ProductsListPage />,
-      // },
+      {
+        path: "/colaboradores",
+        element: < ExploreUsersPage />,
+      },
     ]
   }
 

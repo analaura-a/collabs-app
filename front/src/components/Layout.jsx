@@ -40,7 +40,10 @@ const Layout = ({ children }) => {
                                 </a>
                                 <ul className="dropdown-menu">
                                     <li>
-                                        <Link to="/explore" className="dropdown-item">Proyectos</Link>
+                                        <Link to="/explorar" className="dropdown-item">Proyectos</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/colaboradores" className="dropdown-item">Colaboradores</Link>
                                     </li>
                                 </ul>
                             </li>
