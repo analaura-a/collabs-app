@@ -3,20 +3,35 @@ import ProjectList from '../components/ProjectList'
 
 const ExplorePage = () => {
 
-    const [projects, setProjects] = useState([])
+    const [projects, setProjects] = useState([]);
+    const [filter, setFilter] = useState('');
+
+    const fetchProjects = async (type) => {
+        let endpoint = 'http://localhost:3333/api/projects';
+
+        if (type) {
+            endpoint = `http://localhost:3333/api/projects/${type}`;
+        }
+
+        try {
+            const response = await fetch(endpoint);
+            const data = await response.json();
+            setProjects(data);
+            console.log(data);
+        } catch (error) {
+            console.error('Error fetching projects: ', error);
+        }
+    };
 
     useEffect(() => {
-        fetch('http://localhost:3333/api/projects')
-            .then((res) => res.json())
-            .then((data) => setProjects(data));
-    }, [])
+        fetchProjects(filter); // Llama a fetchProjects solo cuando cambia el filtro
+    }, [filter]);
 
-    useEffect(() => { }, [projects])
 
     return <>
         <h1 className="mt-5">Descubre oportunidades de colaboración</h1>
 
-        <ProjectList projectsReceived={projects} />
+        <ProjectList projectsReceived={projects} setFilter={setFilter} />
 
     </>
 };

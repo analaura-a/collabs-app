@@ -3,10 +3,13 @@ import { PropTypes } from "prop-types";
 
 import ProjectListItem from "./ProjectListItem";
 
-const ProjectList = ({ projectsReceived }) => {
+const ProjectList = ({ projectsReceived, setFilter }) => {
 
+    const [projects, setProjects] = useState(projectsReceived);
 
-    const [projects, setProjects] = React.useState(projectsReceived)
+    useEffect(() => {
+        setProjects(projectsReceived)
+    }, [projectsReceived])
 
     const onChangeFilter = (event) => {
 
@@ -23,13 +26,7 @@ const ProjectList = ({ projectsReceived }) => {
             setProjects(projectsReceived)
         }
 
-
     }
-
-    useEffect(() => {
-        setProjects(projectsReceived)
-    }, [projectsReceived])
-
 
     return projects.length > 0 ?
         (
@@ -43,6 +40,18 @@ const ProjectList = ({ projectsReceived }) => {
                         aria-label=".form-control-lg example"
                     />
                 </form>
+
+                <div className="mt-3">
+                    <button className="btn btn-primary me-2" onClick={() => setFilter('personal')}>
+                        Personales
+                    </button>
+                    <button className="btn btn-primary me-2" onClick={() => setFilter('open-source')}>
+                        Open-source
+                    </button>
+                    <button className="btn btn-primary" onClick={() => setFilter('')}>
+                        Todos
+                    </button>
+                </div>
 
                 <ul className="list-unstyled row row-cols-1 row-cols-md-3 g-4 mt-5">
                     {
