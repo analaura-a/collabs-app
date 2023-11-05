@@ -36,4 +36,8 @@ const UserListItem = ({ user }) => {
     );
 };
 
+UserListItem.propTypes = {
+    user: PropTypes.object.isRequired
+}
+
 export default UserListItem;

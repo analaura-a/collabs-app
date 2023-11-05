@@ -28,24 +28,43 @@ const UserList = ({ usersReceived }) => {
         setUsers(usersReceived)
     }, [usersReceived])
 
-    return (
-        <>
-            <form onSubmit={(e) => { e.preventDefault() }}>
-                <input
-                    className="form-control form-control-lg mt-5"
-                    type="text"
-                    onChange={onChangeFilter}
-                    placeholder="Buscar personas..."
-                    aria-label=".form-control-lg example" />
-            </form>
+    return users.length > 0 ?
+        (
+            <>
+                <form onSubmit={(e) => { e.preventDefault() }}>
+                    <input
+                        className="form-control form-control-lg mt-5"
+                        type="text"
+                        onChange={onChangeFilter}
+                        placeholder="Buscar personas..."
+                        aria-label=".form-control-lg example" />
+                </form>
 
-            <ul className="list-unstyled row row-cols-1 row-cols-md-3 g-4 mt-5">
-                {
-                    users.map(user => <UserListItem key={user._id} user={user} />)
-                }
-            </ul>
-        </>
-    );
+                <ul className="list-unstyled row row-cols-1 row-cols-md-3 g-4 mt-5">
+                    {
+                        users.map(user => <UserListItem key={user._id} user={user} />)
+                    }
+                </ul>
+            </>
+        )
+        : (
+            <>
+                <form onSubmit={(e) => { e.preventDefault() }}>
+                    <input
+                        className="form-control form-control-lg mt-5"
+                        type="text"
+                        onChange={onChangeFilter}
+                        placeholder="Buscar personas..."
+                        aria-label=".form-control-lg example" />
+                </form>
+
+                <h2 className="mt-5">No hay resultados para tu búsqueda...</h2>
+            </>
+        )
 };
+
+UserList.propTypes = {
+    usersReceived: PropTypes.array.isRequired
+}
 
 export default UserList;

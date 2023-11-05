@@ -3,13 +3,13 @@ import { PropTypes } from "prop-types";
 
 const ProjectListItem = ({ project }) => {
 
-    const { _id, name, about, open_positions } = project;
+    const { _id, name, about, img, founder, open_positions } = project;
 
     return (
 
         <li className="col">
             <div className="card h-100">
-                <img src="https://www.alkemy.org/wp-content/uploads/2022/04/como-conseguir-el-primer-empleo-en-it.jpg" className="card-img-top" alt="..." />
+                <img src={img} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
                     <p className="card-text">
@@ -17,7 +17,7 @@ const ProjectListItem = ({ project }) => {
                     </p>
 
                     <p className="card-text mt-2">
-                        Organizado por <span>Ana Laura Almirón</span>
+                        Organizado por <span>{founder.name + " " + founder.last_name}</span>
                     </p>
 
                     <h3 className="card-text">Buscando</h3>
@@ -37,8 +37,8 @@ const ProjectListItem = ({ project }) => {
     );
 };
 
-// ProjectListItem.propTypes = {
-//     producto: PropTypes.object.isRequired
-// }
+ProjectListItem.propTypes = {
+    project: PropTypes.object.isRequired
+}
 
 export default ProjectListItem;
