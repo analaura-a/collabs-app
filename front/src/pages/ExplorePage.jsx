@@ -13,9 +13,6 @@ const ExplorePage = () => {
 
     useEffect(() => { }, [projects])
 
-
-
-
     return <>
         <h1 className="mt-5">Descubre oportunidades de colaboración</h1>
 

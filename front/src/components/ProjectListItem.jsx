@@ -3,7 +3,7 @@ import { PropTypes } from "prop-types";
 
 const ProjectListItem = ({ project }) => {
 
-    const { _id, name} = project;
+    const { _id, name, about, open_positions } = project;
 
     return (
 
@@ -13,7 +13,7 @@ const ProjectListItem = ({ project }) => {
                 <div className="card-body">
                     <h2 className="card-title">{name}</h2>
                     <p className="card-text">
-                        La idea es crear una web para que las mascotas sin hogar puedan ser adoptadas por personas que estén buscando un nuevo com...
+                        {about}
                     </p>
 
                     <p className="card-text mt-2">
@@ -21,10 +21,13 @@ const ProjectListItem = ({ project }) => {
                     </p>
 
                     <h3 className="card-text">Buscando</h3>
+
                     <ul>
-                        <li>UX Designer</li>
-                        <li>Frontend Developer</li>
-                        <li>Backend Developer</li>
+                        {
+                            open_positions.map((position, index) => (
+                                <li key={index}>{position.profile}</li>
+                            ))
+                        }
                     </ul>
 
                 </div>
