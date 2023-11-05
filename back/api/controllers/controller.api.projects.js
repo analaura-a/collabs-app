@@ -15,6 +15,33 @@ const getProjects = (req, res) => {
 
 };
 
+//Traer todos los proyectos de tipo personal
+const getProjectsPersonal = (req, res) => {
+
+    service.getProjectsPersonal({ deleted: true })
+        .then((projects) => {
+            res.status(200).json(projects);
+        })
+        .catch((error) => {
+            res.status(404).json();
+        });
+
+
+};
+
+//Traer todos los proyectos de tipo open-source
+const getProjectsOpenSource = (req, res) => {
+
+    service.getProjectsOpenSource({ deleted: true })
+        .then((projects) => {
+            res.status(200).json(projects);
+        })
+        .catch((error) => {
+            res.status(404).json();
+        });
+
+};
+
 //Traer todos los proyectos creados por un usuario en particular
 const getProjectsByUser = (req, res) => {
 
@@ -126,6 +153,8 @@ const deleteProject = (req, res) => {
 
 export {
     getProjects,
+    getProjectsPersonal,
+    getProjectsOpenSource,
     getProjectsByUser,
     getProjectById,
     createProject,
