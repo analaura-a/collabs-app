@@ -17,7 +17,7 @@ const ProjectListItem = ({ project }) => {
                     </p>
 
                     <p className="card-text mt-2">
-                        Organizado por <span>{founder.name + " " + founder.last_name}</span>
+                        Organizado por <span className="fw-bold">{founder.name + " " + founder.last_name}</span>
                     </p>
 
                     <h3 className="card-text">Buscando</h3>

@@ -15,11 +15,11 @@ const routes = createBrowserRouter([
     errorElement: <Error404Page />,
     children: [
       {
-        path: "/explorar",
+        path: "/explorar/proyectos",
         element: <ExplorePage />,
       },
       {
-        path: "/colaboradores",
+        path: "/explorar/colaboradores",
         element: < ExploreUsersPage />,
       },
     ]
