@@ -1,14 +1,14 @@
 {
-  "name": "primer-parcial",
+  "name": "Collabs",
   "version": "1.0.0",
-  "description": "Primer parcial de Aplicaciones Hibridas",
+  "description": "Plataforma de búsqueda de colaboradores para proyectos voluntarios del rubro IT",
   "main": "server.js",
   "type": "module",
   "scripts": {
     "start": "node ./app/server.js",
     "dev": "nodemon ./app/server.js"
   },
-  "author": "Ana Almiron y Brisa Marca",
+  "author": "Ana Almirón y Brisa Marca",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

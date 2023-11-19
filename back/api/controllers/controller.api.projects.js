@@ -80,7 +80,7 @@ const createProject = (req, res) => {
         required_availability: req.body.required_availability,
         link: req.body.link,
         open_positions: req.body.open_positions,
-        founder_id: req.body.founder_id
+        founder: req.body.founder
     };
 
     service
