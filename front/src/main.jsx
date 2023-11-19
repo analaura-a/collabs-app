@@ -7,6 +7,7 @@ import ExploreProjectsPage from './pages/ExploreProjectsPage.jsx'
 import ExploreUsersPage from './pages/ExploreUsersPage.jsx'
 import Error404Page from './pages/Error404Page.jsx'
 import UserProfilePage from './pages/UserProfilePage.jsx'
+import ProjectDetailPage from './pages/ProjectDetailPage.jsx'
 
 const routes = createBrowserRouter([
 
@@ -20,12 +21,16 @@ const routes = createBrowserRouter([
         element: <ExploreProjectsPage />,
       },
       {
+        path: "/explorar/proyectos/:id",
+        element: <ProjectDetailPage />,
+      },
+      {
         path: "/explorar/colaboradores",
-        element: < ExploreUsersPage />,
+        element: <ExploreUsersPage />,
       },
       {
         path: "/user/:id",
-        element: < UserProfilePage />,
+        element: <UserProfilePage />,
       }
     ]
   }

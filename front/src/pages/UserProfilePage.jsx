@@ -10,7 +10,7 @@ const UserProfilePage = () => {
 
     useEffect(() => {
         console.log("Iniciando componente");
-        fetch(`http://localhost:3333/api//users/${id}`)
+        fetch(`http://localhost:3333/api/users/${id}`)
             .then((res) => {
                 if (!res.ok || res.status === 401) {
                     navigate("/explorar/colaboradores", { replace: true });
@@ -26,7 +26,7 @@ const UserProfilePage = () => {
             <>
                 <div className="mt-5">
                     <img src={user.profile_pic} alt={user.name} className="rounded-4" />
-                    <h1 className="mt-1">{user.name} {user.last_name}</h1>
+                    <h1 className="mt-2">{user.name} {user.last_name}</h1>
                     <p>{user.location}</p>
                 </div>
                 <div className="mt-5">
