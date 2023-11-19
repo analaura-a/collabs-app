@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App.jsx'
-import ExplorePage from './pages/ExplorePage.jsx'
+import ExploreProjectsPage from './pages/ExploreProjectsPage.jsx'
 import ExploreUsersPage from './pages/ExploreUsersPage.jsx'
 import Error404Page from './pages/Error404Page.jsx'
+import UserProfilePage from './pages/UserProfilePage.jsx'
 
 const routes = createBrowserRouter([
 
@@ -16,12 +17,16 @@ const routes = createBrowserRouter([
     children: [
       {
         path: "/explorar/proyectos",
-        element: <ExplorePage />,
+        element: <ExploreProjectsPage />,
       },
       {
         path: "/explorar/colaboradores",
         element: < ExploreUsersPage />,
       },
+      {
+        path: "/user/:id",
+        element: < UserProfilePage />,
+      }
     ]
   }
 

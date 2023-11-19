@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 
 const UserListItem = ({ user }) => {
@@ -8,29 +8,33 @@ const UserListItem = ({ user }) => {
     return (
 
         <li className="col">
-            <div className="card h-100">
-                <img src={profile_pic} className="card-img-top" alt={name} />
-                <div className="card-body">
-                    <h2 className="card-title">{name} {last_name}</h2>
-                    <p className="card-text">
-                        {location}
-                    </p>
-                    <p className="card-text">
-                        {bio}
-                    </p>
+            <Link
+                to={`/user/${_id}`} className="text-decoration-none"
+            >
+                <div className="card h-100">
+                    <img src={profile_pic} className="card-img-top" alt={name} />
+                    <div className="card-body">
+                        <h2 className="card-title">{name} {last_name}</h2>
+                        <p className="card-text">
+                            {location}
+                        </p>
+                        <p className="card-text">
+                            {bio}
+                        </p>
 
-                    <h3 className="card-text">Perfil profesional</h3>
-                    <ul>
-                        {
-                            professional_profile.map((profile, index) => (
-                                <li key={index}>{profile}</li>
-                            ))
-                        }
+                        <h3 className="card-text">Perfil profesional</h3>
+                        <ul>
+                            {
+                                professional_profile.map((profile, index) => (
+                                    <li key={index}>{profile}</li>
+                                ))
+                            }
 
-                    </ul>
+                        </ul>
 
+                    </div>
                 </div>
-            </div>
+            </Link>
         </li>
 
     );

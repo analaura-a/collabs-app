@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ProjectList from '../components/ProjectList'
 
-const ExplorePage = () => {
+const ExploreProjectsPage = () => {
 
     const [projects, setProjects] = useState([]);
     const [filter, setFilter] = useState('');
@@ -36,4 +36,4 @@ const ExplorePage = () => {
     </>
 };
 
-export default ExplorePage
+export default ExploreProjectsPage
