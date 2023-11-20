@@ -4,7 +4,7 @@ import * as service from "../../services/projects_teams.services.js";
 const getTeamByProjectId = (req, res) => {
 
     const id = req.params.id;
-    
+
     service.getTeamByProjectId(id).then((team) => {
         if (team) {
             res.status(200).json(team);
@@ -15,7 +15,26 @@ const getTeamByProjectId = (req, res) => {
 
 }
 
+//Crear un nuevo equipo
+const createTeam = (req, res) => {
+
+    const team = {
+        project_id: req.body.project_id,
+        members: req.body.members,
+    };
+
+    service
+        .createTeam(team)
+        .then((newTeam) => {
+            res.status(201).json(newTeam);
+        })
+        .catch((error) => {
+            res.status(500).json();
+        });
+
+}
 
 export {
-    getTeamByProjectId
+    getTeamByProjectId,
+    createTeam
 }

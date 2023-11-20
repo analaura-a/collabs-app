@@ -15,5 +15,5 @@ app.use(cors())
 app.use("/", express.static("public"));
 
 app.use('/api', ApiProjectsRoute);
-// app.use('/api', ApiProjectsTeamsRoute);
+app.use('/api', ApiProjectsTeamsRoute);
 app.use('/api', ApiUsersRoute);

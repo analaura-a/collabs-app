@@ -7,5 +7,7 @@ const route = Router();
 //Obtener el equipo de un proyecto en particular
 route.get('/projects/:id/team', controllers.getTeamByProjectId);
 
+//Agregar un nuevo equipo
+route.post('/teams', controllers.createTeam);
 
 export default route;
