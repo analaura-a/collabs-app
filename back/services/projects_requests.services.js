@@ -16,7 +16,14 @@ async function createRequest(request) {
     return request;
 }
 
+//Eliminar una postulación
+async function deleteRequest(id) {
+    const deletedRequest = await db.collection("projects_requests").deleteOne({ _id: new ObjectId(id) })
+    return deletedRequest;
+}
+
 export {
     getRequestsByProjectId,
-    createRequest
+    createRequest,
+    deleteRequest
 }

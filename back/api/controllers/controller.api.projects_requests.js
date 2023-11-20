@@ -35,7 +35,22 @@ const createRequest = (req, res) => {
         });
 }
 
+//Eliminar una postulación
+const deleteRequest = (req, res) => {
+
+    const id = req.params.id;
+
+    service
+        .deleteRequest(id)
+        .then(() => {
+            res.status(204).json();
+        })
+        .catch((error) => res.status(500).json());
+
+}
+
 export {
     getRequestsByProjectId,
-    createRequest
+    createRequest,
+    deleteRequest
 }
