@@ -15,6 +15,12 @@ async function createTeam(team) {
     return team;
 }
 
+//Editar un equipo
+async function editTeam(id, team) {
+    const editedTeam = await db.collection("projects_teams").updateOne({ _id: new ObjectId(id) }, { $set: team });
+    return editedTeam;
+}
+
 //Eliminar un equipo
 async function deleteTeam(id) {
     const deletedTeam = await db.collection("projects_teams").deleteOne({ _id: new ObjectId(id) })
@@ -24,5 +30,6 @@ async function deleteTeam(id) {
 export {
     getTeamByProjectId,
     createTeam,
+    editTeam,
     deleteTeam
 }

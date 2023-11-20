@@ -34,6 +34,28 @@ const createTeam = (req, res) => {
 
 }
 
+//Editar un equipo
+const editTeam = (req, res) => {
+
+    const id = req.params.id;
+
+    const team = {};
+
+    if (req.body.members) {
+        team.members = req.body.members;
+    }
+
+    service.editTeam(id, team)
+        .then((editedTeam) => {
+            if (editedTeam) {
+                res.status(200).json(editedTeam);
+            } else {
+                res.status(404).json();
+            }
+        });
+
+}
+
 //Eliminar un equipo
 const deleteTeam = (req, res) => {
 
@@ -52,5 +74,6 @@ const deleteTeam = (req, res) => {
 export {
     getTeamByProjectId,
     createTeam,
+    editTeam,
     deleteTeam
 }
