@@ -48,7 +48,7 @@ const getProjectsByUser = (req, res) => {
     const id = req.params.id;
 
     service.getProjectsByUser(id).then((projects) => {
-    
+
         if (projects) {
             res.status(200).json(projects);
         } else {
@@ -73,21 +73,8 @@ const getProjectById = (req, res) => {
 //Crear un nuevo proyecto
 const createProject = (req, res) => {
 
-    const project = {
-        type: req.body.type,
-        status: req.body.status,
-        name: req.body.name,
-        about: req.body.about,
-        img: req.body.img,
-        required_availability: req.body.required_availability,
-        url: req.body.url,
-        open_positions: req.body.open_positions,
-        founder: req.body.founder,
-        founder_id: req.body.founder_id
-    };
-
     service
-        .createProject(project)
+        .createProject(req.body)
         .then((newProject) => {
             res.status(201).json(newProject);
         })
@@ -96,47 +83,20 @@ const createProject = (req, res) => {
         });
 };
 
+
 //Editar un proyecto
-const editProject = (req, res) => {
+const editProject = async (req, res) => {
+
     const id = req.params.id;
 
-    const project = {};
-
-    if (req.body.type) {
-        project.type = req.body.type;
-    }
-
-    if (req.body.status) {
-        project.status = req.body.status;
-    }
-
-    if (req.body.name) {
-        project.name = req.body.name;
-    }
-
-    if (req.body.about) {
-        project.about = req.body.about;
-    }
-
-    if (req.body.img) {
-        project.img = req.body.img;
-    }
-
-    if (req.body.required_availability) {
-        project.required_availability = req.body.required_availability;
-    }
-
-    if (req.body.link) {
-        project.link = req.body.link;
-    }
-
-    service.editProject(id, project).then((editedProject) => {
-        if (editedProject) {
-            res.status(200).json(editedProject);
-        } else {
-            res.status(404).json();
-        }
-    });
+    service.editProject(id, req.body)
+        .then((editedProject) => {
+            if (editedProject) {
+                res.status(200).json(editedProject);
+            } else {
+                res.status(404).json();
+            }
+        });
 
 };
 

@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import * as controllers from '../controllers/controller.api.projects_teams.js';
-import { validateTeamCreate, validateTeamPatch, validateTeamMemberPatch } from '../../middleware/project_teams.validate.middleware.js'
+import { validateTeamCreate, validateTeamPatch, validateTeamMemberPatch } from '../../middleware/projects_teams.validate.middleware.js'
 
 const route = Router();
 
