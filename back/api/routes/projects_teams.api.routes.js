@@ -8,12 +8,15 @@ const route = Router();
 route.get('/projects/:id/team', controllers.getTeamByProjectId);
 
 //Agregar un nuevo equipo
-route.post('/teams', controllers.createTeam);
+route.post('/project_teams', controllers.createTeam);
 
 //Editar un equipo
-route.patch('/teams/:id', controllers.editTeam);
+route.patch('/project_teams/:id', controllers.editTeam);
+
+//Agregar miembro a un equipo particular
+route.patch('/projects/:id/team', controllers.addMemberToTeam);
 
 //Eliminar un equipo
-route.delete("/teams/:id", controllers.deleteTeam);
+route.delete("/project_teams/:id", controllers.deleteTeam);
 
 export default route;

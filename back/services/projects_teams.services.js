@@ -21,6 +21,17 @@ async function editTeam(id, team) {
     return editedTeam;
 }
 
+//Agregar miembro a un equipo particular
+async function addMemberToTeam(projectId, newMember) {
+
+    const editedTeam = await db.collection("projects_teams").findOneAndUpdate(
+        { project_id: projectId },
+        { $push: { members: newMember } },
+        { returnDocument: 'after' }
+    );
+    return editedTeam;
+}
+
 //Eliminar un equipo
 async function deleteTeam(id) {
     const deletedTeam = await db.collection("projects_teams").deleteOne({ _id: new ObjectId(id) })
@@ -31,5 +42,6 @@ export {
     getTeamByProjectId,
     createTeam,
     editTeam,
+    addMemberToTeam,
     deleteTeam
 }

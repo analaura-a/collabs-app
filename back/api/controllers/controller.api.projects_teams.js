@@ -56,6 +56,24 @@ const editTeam = (req, res) => {
 
 }
 
+//Agregar miembro a un equipo particular
+const addMemberToTeam = (req, res) => {
+
+    const projectId = req.params.id;
+    const newMember = req.body;
+
+    service.addMemberToTeam(projectId, newMember)
+
+        .then((editedTeam) => {
+            if (editedTeam) {
+                res.status(200).json(editedTeam);
+            } else {
+                res.status(404).json();
+            }
+        });
+
+}
+
 //Eliminar un equipo
 const deleteTeam = (req, res) => {
 
@@ -75,5 +93,6 @@ export {
     getTeamByProjectId,
     createTeam,
     editTeam,
+    addMemberToTeam,
     deleteTeam
 }
