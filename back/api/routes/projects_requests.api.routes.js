@@ -7,4 +7,7 @@ const route = Router();
 //Obtener las postulaciones de un proyecto en particular
 route.get('/projects/:id/requests', controllers.getRequestsByProjectId);
 
+//Agregar una nueva postulación
+route.post('/project_requests', controllers.createRequest);
+
 export default route;

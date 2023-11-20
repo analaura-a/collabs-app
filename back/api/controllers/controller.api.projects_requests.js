@@ -15,6 +15,27 @@ const getRequestsByProjectId = (req, res) => {
 
 }
 
+//Agregar una nueva postulación
+const createRequest = (req, res) => {
+
+    const request = {
+        project_id: req.body.project_id,
+        candidate: req.body.candidate,
+        position: req.body.position,
+        status: req.body.status,
+    };
+
+    service
+        .createRequest(request)
+        .then((newRequest) => {
+            res.status(201).json(newRequest);
+        })
+        .catch((error) => {
+            res.status(500).json();
+        });
+}
+
 export {
-    getRequestsByProjectId
+    getRequestsByProjectId,
+    createRequest
 }

@@ -8,6 +8,15 @@ async function getRequestsByProjectId(id) {
     return db.collection("projects_requests").find({ project_id: id }).toArray();
 }
 
+//Agregar una nueva postulación
+async function createRequest(request) {
+    const requests = await db.collection("projects_requests").insertOne(request);
+    request._id = requests.insertedId;
+
+    return request;
+}
+
 export {
-    getRequestsByProjectId
+    getRequestsByProjectId,
+    createRequest
 }
