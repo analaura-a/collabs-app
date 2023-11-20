@@ -1,5 +1,5 @@
 import * as service from "../../services/accounts.services.js";
-import * as tokenService from "../../services/token.service.js";
+import * as tokenService from "../../services/token.services.js";
 
 const createAccount = async (req, res) => {
 

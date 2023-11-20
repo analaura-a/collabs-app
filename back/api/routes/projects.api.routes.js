@@ -1,24 +1,25 @@
 import { Router } from 'express';
 import * as controllers from '../controllers/controller.api.projects.js';
 import { validatePersonalProjectCreate, validateOpenSourceProjectCreate, validatePersonalProjectPatch, validateOpenSourceProjectPatch } from '../../middleware/projects.validate.middleware.js'
+import { validateTokenMiddleware } from '../../middleware/token.validate.middleware.js'
 
 const route = Router();
 
 /* API PROYECTOS */
 //Obtener todos los proyectos
-route.get('/projects', controllers.getProjects);
+route.get('/projects', [validateTokenMiddleware], controllers.getProjects);
 
 //Obtener los proyectos de tipo personal
-route.get('/projects/personal', controllers.getProjectsPersonal)
+route.get('/projects/personal', [validateTokenMiddleware], controllers.getProjectsPersonal)
 
 //Obtener los proyectos de tipo open-source
-route.get('/projects/open-source', controllers.getProjectsOpenSource)
+route.get('/projects/open-source', [validateTokenMiddleware], controllers.getProjectsOpenSource)
 
 //Obtener todos los proyectos que creó un usuario en particular
-route.get('/user/:id/projects', controllers.getProjectsByUser);
+route.get('/user/:id/projects', [validateTokenMiddleware], controllers.getProjectsByUser);
 
 //Obtener un proyecto en especifico
-route.get('/projects/:id', controllers.getProjectById)
+route.get('/projects/:id', [validateTokenMiddleware], controllers.getProjectById)
 
 //Agregar un nuevo proyecto personal
 route.post('/projects/personal', [validatePersonalProjectCreate], controllers.createProject);
