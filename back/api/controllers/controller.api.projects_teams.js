@@ -16,36 +16,29 @@ const getTeamByProjectId = (req, res) => {
 }
 
 //Crear un nuevo equipo
-const createTeam = (req, res) => {
+const createTeam = async (req, res) => {
 
-    const team = {
-        project_id: req.body.project_id,
-        members: req.body.members,
-    };
+    try {
 
-    service
-        .createTeam(team)
-        .then((newTeam) => {
-            res.status(201).json(newTeam);
-        })
-        .catch((error) => {
-            res.status(500).json();
-        });
+        service
+            .createTeam(req.body)
+            .then((newTeam) => {
+                res.status(201).json(newTeam);
+            })
+
+    } catch (error) {
+        console.log(error)
+        res.status(500).json();
+    }
 
 }
 
 //Editar un equipo
-const editTeam = (req, res) => {
+const editTeam = async (req, res) => {
 
     const id = req.params.id;
 
-    const team = {};
-
-    if (req.body.members) {
-        team.members = req.body.members;
-    }
-
-    service.editTeam(id, team)
+    service.editTeam(id, req.body)
         .then((editedTeam) => {
             if (editedTeam) {
                 res.status(200).json(editedTeam);

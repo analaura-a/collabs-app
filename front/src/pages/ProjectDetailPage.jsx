@@ -51,9 +51,9 @@ const ProjectDetailPage = () => {
                         {
                             project.open_positions.map((position, index) => (
 
-                                <div className="mb-4" key={index}>
+                                <li className="mb-4" key={index}>
 
-                                    <li key={index} className="fs-4">{position.profile}</li>
+                                    <p key={index} className="fs-4">{position.profile}</p>
 
                                     <h3 className="fs-6 mt-2">Skills requeridas</h3>
                                     <ul>
@@ -73,7 +73,7 @@ const ProjectDetailPage = () => {
                                         }
                                     </ul>
 
-                                </div>
+                                </li>
 
                             ))
                         }
