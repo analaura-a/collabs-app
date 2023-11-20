@@ -46,7 +46,9 @@ const getProjectsOpenSource = (req, res) => {
 const getProjectsByUser = (req, res) => {
 
     const id = req.params.id;
+
     service.getProjectsByUser(id).then((projects) => {
+    
         if (projects) {
             res.status(200).json(projects);
         } else {
@@ -78,9 +80,10 @@ const createProject = (req, res) => {
         about: req.body.about,
         img: req.body.img,
         required_availability: req.body.required_availability,
-        link: req.body.link,
+        url: req.body.url,
         open_positions: req.body.open_positions,
-        founder: req.body.founder
+        founder: req.body.founder,
+        founder_id: req.body.founder_id
     };
 
     service
