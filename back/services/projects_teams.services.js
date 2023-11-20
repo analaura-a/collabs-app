@@ -15,7 +15,14 @@ async function createTeam(team) {
     return team;
 }
 
+//Eliminar un equipo
+async function deleteTeam(id) {
+    const deletedTeam = await db.collection("projects_teams").deleteOne({ _id: new ObjectId(id) })
+    return deletedTeam;
+}
+
 export {
     getTeamByProjectId,
-    createTeam
+    createTeam,
+    deleteTeam
 }

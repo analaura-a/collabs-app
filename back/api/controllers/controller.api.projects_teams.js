@@ -34,7 +34,23 @@ const createTeam = (req, res) => {
 
 }
 
+//Eliminar un equipo
+const deleteTeam = (req, res) => {
+
+    const id = req.params.id;
+
+    service
+        .deleteTeam(id)
+        .then(() => {
+            res.status(204).json();
+        })
+        .catch((error) => res.status(500).json());
+
+}
+
+
 export {
     getTeamByProjectId,
-    createTeam
+    createTeam,
+    deleteTeam
 }

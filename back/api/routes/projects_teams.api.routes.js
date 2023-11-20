@@ -10,4 +10,7 @@ route.get('/projects/:id/team', controllers.getTeamByProjectId);
 //Agregar un nuevo equipo
 route.post('/teams', controllers.createTeam);
 
+//Eliminar un equipo
+route.delete("/teams/:id", controllers.deleteTeam);
+
 export default route;
