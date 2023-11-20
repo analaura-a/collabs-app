@@ -50,29 +50,31 @@ const ProjectDetailPage = () => {
                     <ul>
                         {
                             project.open_positions.map((position, index) => (
-                                <>
-                                    <div className="mb-4">
-                                        <li key={index} className="fs-4">{position.profile}</li>
 
-                                        <h3 className="fs-6 mt-2">Skills requeridas</h3>
-                                        <ul>
-                                            {
-                                                position.required_skills.map((skill, indice) => (
-                                                    <li key={indice}>{skill}</li>
-                                                ))
-                                            }
-                                        </ul>
+                                <div className="mb-4" key={index}>
 
-                                        <h3 className="fs-6 mt-2">Skills deseables</h3>
-                                        <ul>
-                                            {
-                                                position.desired_skills.map((skill, otroIndice) => (
-                                                    <li key={otroIndice}>{skill}</li>
-                                                ))
-                                            }
-                                        </ul>
-                                    </div>
-                                </>
+                                    <li key={index} className="fs-4">{position.profile}</li>
+
+                                    <h3 className="fs-6 mt-2">Skills requeridas</h3>
+                                    <ul>
+                                        {
+                                            position.required_skills.map((skill, indice) => (
+                                                <li key={indice}>{skill}</li>
+                                            ))
+                                        }
+                                    </ul>
+
+                                    <h3 className="fs-6 mt-2">Skills deseables</h3>
+                                    <ul>
+                                        {
+                                            position.desired_skills.map((skill, otroIndice) => (
+                                                <li key={otroIndice}>{skill}</li>
+                                            ))
+                                        }
+                                    </ul>
+
+                                </div>
+
                             ))
                         }
                     </ul>
@@ -100,7 +102,7 @@ const ProjectDetailPage = () => {
                         {
                             project.open_positions.map((position, index) => (
 
-                                <div className="form-check">
+                                <div className="form-check" key={index}>
                                     <input className="form-check-input" type="radio" name="default" id={index}></input>
                                     <label className="form-check-label" htmlFor={index}>
                                         {position.profile}
