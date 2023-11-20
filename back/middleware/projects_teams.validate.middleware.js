@@ -1,4 +1,4 @@
-import { teamSchemaCreate, teamSchemaPatch, teamMemberSchemaPatch } from '../schemas/project_teams.schema.js'
+import { teamSchemaCreate, teamSchemaPatch, teamMemberSchemaPatch } from '../schemas/projects_teams.schema.js'
 
 function validateTeamCreate(req, res, next) {
 
