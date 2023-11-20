@@ -26,8 +26,15 @@ async function createUser(user) {
     return user;
 }
 
+//Editar un usuario
+async function editUser(id, user) {
+    const editedUser = await db.collection("users").updateOne({ _id: new ObjectId(id) }, { $set: user });
+    return editedUser;
+}
+
 export {
     getUsers,
     getUserById,
-    createUser
+    createUser,
+    editUser
 }

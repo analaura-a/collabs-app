@@ -31,22 +31,8 @@ const getUserById = (req, res) => {
 //Crear un nuevo usuario
 const createUser = (req, res) => {
 
-    const user = {
-        profile_pic: req.body.profile_pic,
-        name: req.body.name,
-        last_name: req.body.last_name,
-        bio: req.body.bio,
-        location: req.body.location,
-        professional_profile: req.body.professional_profile,
-        skills: req.body.skills,
-        experience_level: req.body.experience_level,
-        availability: req.body.availability,
-        portfolio: req.body.portfolio,
-        preferences: req.body.preferences
-    };
-
     service
-        .createUser(user)
+        .createUser(req.body)
         .then((newUser) => {
             res.status(201).json(newUser);
         })
@@ -56,8 +42,25 @@ const createUser = (req, res) => {
 
 };
 
+//Editar un usuario
+const editUser = (req, res) => {
+
+    const id = req.params.id;
+
+    service.editUser(id, req.body)
+        .then((editedUser) => {
+            if (editedUser) {
+                res.status(200).json(editedUser);
+            } else {
+                res.status(404).json();
+            }
+        });
+
+}
+
 export {
     getUsers,
     getUserById,
-    createUser
+    createUser,
+    editUser
 }
