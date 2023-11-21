@@ -14,10 +14,15 @@ const ExploreProjectsPage = () => {
         }
 
         try {
-            const response = await fetch(endpoint);
+            const response = await fetch(endpoint, {
+                headers: {
+                    "auth-token": localStorage.getItem("token")
+                },
+            });
+            
             const data = await response.json();
             setProjects(data);
-            console.log(data);
+            // console.log(data);
         } catch (error) {
             console.error('Error fetching projects: ', error);
         }

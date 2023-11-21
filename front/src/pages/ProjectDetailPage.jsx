@@ -11,7 +11,11 @@ const ProjectDetailPage = () => {
 
     useEffect(() => {
         console.log("Iniciando componente");
-        fetch(`http://localhost:3333/api/projects/${id}`)
+        fetch(`http://localhost:3333/api/projects/${id}`, {
+            headers: {
+                "auth-token": localStorage.getItem("token")
+            },
+        })
             .then((res) => {
                 if (!res.ok || res.status === 401) {
                     navigate("/explorar/proyectos", { replace: true });

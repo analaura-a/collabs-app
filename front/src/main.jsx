@@ -8,6 +8,7 @@ import ExploreUsersPage from './pages/ExploreUsersPage.jsx'
 import Error404Page from './pages/Error404Page.jsx'
 import UserProfilePage from './pages/UserProfilePage.jsx'
 import ProjectDetailPage from './pages/ProjectDetailPage.jsx'
+import LoginPage from './pages/LoginPage.jsx';
 
 const routes = createBrowserRouter([
 
@@ -33,6 +34,12 @@ const routes = createBrowserRouter([
         element: <UserProfilePage />,
       }
     ]
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+    errorElement: <Error404Page />,
+
   }
 
 ])
