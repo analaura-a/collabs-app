@@ -1,8 +1,7 @@
-import { useContext } from 'react'
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../services/auth.service";
-import { SessionContext } from '../context/SessionContext'
+import { useUserProfile } from '../context/SessionContext'
 
 const NavBar = () => {
 
@@ -17,7 +16,7 @@ const NavBar = () => {
         navigate("/login", { replace: true })
     }
 
-    const { userProfile } = useContext(SessionContext)
+    const userProfile = useUserProfile()
 
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
