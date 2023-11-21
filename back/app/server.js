@@ -19,5 +19,5 @@ app.use("/", express.static("public"));
 app.use('/api', ApiProjectsRoute);
 app.use('/api', ApiProjectsTeamsRoute);
 app.use('/api', ApiProjectsRequestsRoute);
-app.use('/api', ApiUsersRoute);
 app.use('/api', ApiAuthRoute);
+app.use('/api', ApiUsersRoute);

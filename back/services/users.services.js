@@ -18,12 +18,26 @@ async function getUserById(id) {
     return db.collection("users").findOne({ _id: new ObjectId(id) });
 }
 
-//Crear un nuevo usuario
-async function createUser(user) {
-    const users = await db.collection("users").insertOne(user);
-    user._id = users.insertedId;
+//Crear un nuevo perfil de usuario (vinculado a una cuenta)
+async function createUser(account, userProfileData) {
 
-    return user;
+    const userProfile = {
+        ...userProfileData,
+        email: account.email,
+        _id: new ObjectId(account._id)
+    }
+
+    await client.connect()
+
+    const exists = await db.collection("users").findOne({ email: account.email })
+
+    if (exists) {
+        throw new Error("Ya existe un perfil creado para ese usuario")
+    }
+
+    await db.collection("users").insertOne(userProfile)
+
+    return userProfile;
 }
 
 //Editar un usuario

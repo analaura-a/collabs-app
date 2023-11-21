@@ -28,16 +28,16 @@ const getUserById = (req, res) => {
 
 };
 
-//Crear un nuevo usuario
+//Crear un nuevo perfil de usuario (asociado a una cuenta existente)
 const createUser = (req, res) => {
 
     service
-        .createUser(req.body)
+        .createUser(req.account, req.body)
         .then((newUser) => {
             res.status(201).json(newUser);
         })
         .catch((error) => {
-            res.status(500).json();
+            res.status(500).json({ error: { message: error.message } });
         });
 
 };

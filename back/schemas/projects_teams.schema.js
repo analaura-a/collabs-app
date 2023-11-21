@@ -12,17 +12,17 @@ const teamSchemaPatch = yup.object({
 
 const teamMemberSchemaPatch = yup.object({
     _id: yup.string().required(),
-    profile_pic: yup.string().nullable(),
+    profile_pic: yup.string().trim().nullable(),
     name: yup.string().required(),
     last_name: yup.string().required(),
     bio: yup.string().nullable(),
     location: yup.string().nullable(),
     professional_profile: yup.array().of(yup.string()).required(),
     skills: yup.array().of(yup.string()).required(),
-    experience_level: yup.string().required(),
+    experience_level: yup.string().trim().required(),
     availability: yup.string().required(),
-    portfolio: yup.string().url().nullable(),
-    preferences: yup.array().of(yup.string()).nullable(),
+    portfolio: yup.string().trim().url().nullable(),
+    preferences: yup.array().of(yup.string()).required(),
     project_details: yup.object().required(),
 })
 

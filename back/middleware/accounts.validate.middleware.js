@@ -1,8 +1,8 @@
-import { accountSchemaCreate } from '../schemas/accounts.schema.js'
+import { accountSchema } from '../schemas/accounts.schema.js'
 
-function validateAccountCreate(req, res, next) {
+function validateAccount(req, res, next) {
 
-    return accountSchemaCreate.validate(req.body, { abortEarly: false, stripUnknown: true })
+    return accountSchema.validate(req.body, { abortEarly: false, stripUnknown: true })
         .then((account) => {
             req.body = account
             next()
@@ -11,5 +11,5 @@ function validateAccountCreate(req, res, next) {
 }
 
 export {
-    validateAccountCreate
+    validateAccount
 }
