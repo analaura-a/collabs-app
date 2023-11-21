@@ -11,4 +11,7 @@ route.post('/auth/signup', [validateAccountCreate], controllers.createAccount);
 //Iniciar sesión
 route.post('/auth/login', [validateAccountCreate], controllers.login);
 
+//Cerrar sesión
+route.delete('/auth/logout', controllers.logout);
+
 export default route;

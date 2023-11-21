@@ -1,6 +1,7 @@
 import * as service from "../../services/accounts.services.js";
 import * as tokenService from "../../services/token.services.js";
 
+//Crear cuenta
 const createAccount = async (req, res) => {
 
     return service.createAccount(req.body)
@@ -9,6 +10,7 @@ const createAccount = async (req, res) => {
 
 }
 
+//Iniciar sesión
 const login = async (req, res) => {
 
     return service.login(req.body)
@@ -24,7 +26,25 @@ const login = async (req, res) => {
 
 }
 
+//Cerrar sesión
+const logout = async (req, res) => {
+
+    const token = req.headers["auth-token"];
+
+    return tokenService
+        .removeToken(token)
+        .then(() => {
+            res.status(200).json({ message: "Sesión cerrada con éxito" });
+        })
+        .catch((err) => {
+            res.status(400).json({ error: { message: err.message } });
+        });
+
+}
+
+
 export {
     createAccount,
-    login
+    login,
+    logout
 }
