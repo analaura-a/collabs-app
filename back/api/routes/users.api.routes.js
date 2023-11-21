@@ -12,6 +12,9 @@ route.get('/users', controllers.getUsers);
 //Obtener un usuario en especifico
 route.get('/users/:id', controllers.getUserById);
 
+//Obtener el perfil del usuario que inició sesión
+route.get("/user/profile", [validateTokenMiddleware], controllers.getUserProfile)
+
 //Crear nuevo perfil de usuario (asociado a una cuenta creada)
 route.post('/users', [validateTokenMiddleware, validateUserCreate], controllers.createUser)
 

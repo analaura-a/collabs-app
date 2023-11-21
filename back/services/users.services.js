@@ -15,7 +15,14 @@ async function getUsers() {
 
 //Obtener un usuario en específico
 async function getUserById(id) {
-    return db.collection("users").findOne({ _id: new ObjectId(id) });
+
+    const user = await db.collection("users").findOne({ _id: new ObjectId(id) });
+
+    if (!user) {
+        throw new Error("No existe el perfil de ese usuario")
+    }
+
+    return user
 }
 
 //Crear un nuevo perfil de usuario (vinculado a una cuenta)
