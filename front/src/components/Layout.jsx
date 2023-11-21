@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { logout } from "../services/auth.service";
 
 import '../css/Layout.css'
 
@@ -9,13 +10,8 @@ const Layout = ({ children }) => {
 
     const onLogout = async () => {
 
-        await fetch('http://localhost:3333/api/auth/logout', {
-            headers: {
-                "auth-token": localStorage.getItem("token"),
-                "Content-Type": "application/json",
-            },
-            method: "DELETE",
-        })
+        logout()
+            .then((account) => { console.log(account) })
 
         localStorage.removeItem("token")
         navigate("/login", { replace: true })
@@ -66,8 +62,8 @@ const Layout = ({ children }) => {
                                 </ul>
                             </li>
 
-                            <li className="nav-item">
-                                <Link to="/" className="nav-link" onClick={onLogout}>Cerrar sesión</Link>
+                            <li className="nav-item nav-link" role="button" onClick={onLogout}>
+                                Cerrar sesión
                             </li>
                         </ul>
                     </div>

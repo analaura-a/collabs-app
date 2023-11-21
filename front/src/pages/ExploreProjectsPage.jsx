@@ -1,28 +1,18 @@
 import React, { useEffect, useState } from "react";
 import ProjectList from '../components/ProjectList'
+import { getProjects } from '../services/projects.service'
 
 const ExploreProjectsPage = () => {
 
     const [projects, setProjects] = useState([]);
     const [filter, setFilter] = useState('');
 
-    const fetchProjects = async (type) => {
-        let endpoint = 'http://localhost:3333/api/projects';
-
-        if (type) {
-            endpoint = `http://localhost:3333/api/projects/${type}`;
-        }
+    const fetchProjects = (type) => {
 
         try {
-            const response = await fetch(endpoint, {
-                headers: {
-                    "auth-token": localStorage.getItem("token")
-                },
-            });
-            
-            const data = await response.json();
-            setProjects(data);
-            // console.log(data);
+            getProjects(type)
+                .then((projects) => setProjects(projects));
+
         } catch (error) {
             console.error('Error fetching projects: ', error);
         }
@@ -30,8 +20,12 @@ const ExploreProjectsPage = () => {
 
     useEffect(() => {
         fetchProjects(filter); // Llama a fetchProjects solo cuando cambia el filtro
+
+        console.log("Iniciando componente");
+
     }, [filter]);
 
+    useEffect(() => { }, [projects])
 
     return <>
         <h1 className="mt-5">Descubre oportunidades de colaboración</h1>

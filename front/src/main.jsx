@@ -9,12 +9,13 @@ import Error404Page from './pages/Error404Page.jsx'
 import UserProfilePage from './pages/UserProfilePage.jsx'
 import ProjectDetailPage from './pages/ProjectDetailPage.jsx'
 import LoginPage from './pages/LoginPage.jsx';
+import PrivateRoute from './components/PrivateRoute.jsx';
 
 const routes = createBrowserRouter([
 
   {
     path: "/",
-    element: <App />,
+    element: <PrivateRoute> <App /> </PrivateRoute>,
     errorElement: <Error404Page />,
     children: [
       {

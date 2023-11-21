@@ -2,26 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { getProject } from "../services/projects.service";
 
 const ProjectDetailPage = () => {
 
     const [project, setProject] = useState([]);
     const { id } = useParams();
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     useEffect(() => {
         console.log("Iniciando componente");
-        fetch(`http://localhost:3333/api/projects/${id}`, {
-            headers: {
-                "auth-token": localStorage.getItem("token")
-            },
-        })
-            .then((res) => {
-                if (!res.ok || res.status === 401) {
-                    navigate("/explorar/proyectos", { replace: true });
-                }
-                return res.json();
-            })
+
+        getProject(id)
             .then((data) => setProject(data));
     }, []);
 

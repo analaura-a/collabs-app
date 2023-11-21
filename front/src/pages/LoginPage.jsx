@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { login } from "../services/auth.service";
 
 const LoginPage = () => {
 
@@ -20,27 +21,7 @@ const LoginPage = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        // console.log("Email:", email, "Password:", password)
-
-        fetch("http://localhost:3333/api/auth/login", {
-            headers: {
-                "Content-Type": "application/json"
-            },
-            method: "POST",
-            body: JSON.stringify({ email: email, password: password })
-        })
-
-            .then(async (response) => {
-
-                console.log(response.ok)
-
-                if (!response.ok) {
-                    throw await response.json()
-                }
-
-                return await response.json()
-            })
-
+        login({ email, password })
             .then(({ account, token }) => {
                 console.log(account, token)
                 localStorage.setItem("token", token)
