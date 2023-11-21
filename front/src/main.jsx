@@ -10,6 +10,7 @@ import UserProfilePage from './pages/UserProfilePage.jsx'
 import ProjectDetailPage from './pages/ProjectDetailPage.jsx'
 import LoginPage from './pages/LoginPage.jsx';
 import PrivateRoute from './components/PrivateRoute.jsx';
+import MyProjectsPage from './pages/MyProjectsPage.jsx';
 
 const routes = createBrowserRouter([
 
@@ -33,6 +34,10 @@ const routes = createBrowserRouter([
       {
         path: "/user/:id",
         element: <UserProfilePage />,
+      },
+      {
+        path: "/mis-proyectos",
+        element: <MyProjectsPage />,
       }
     ]
   },

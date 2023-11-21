@@ -27,6 +27,11 @@ export async function getProjects(type) {
 
 }
 
+//Obtener proyectos creados por un usuario
+export function getProjectsCreatedByUser(id) {
+    return call({ uri: `user/${id}/projects` })
+}
+
 //Obtener un proyecto en particular
 export function getProject(id) {
     return call({ uri: `projects/${id}` })
@@ -34,5 +39,6 @@ export function getProject(id) {
 
 export default {
     getProjects,
+    getProjectsCreatedByUser,
     getProject
 }

@@ -19,7 +19,7 @@ const ExploreProjectsPage = () => {
     };
 
     useEffect(() => {
-        fetchProjects(filter); // Llama a fetchProjects solo cuando cambia el filtro
+        fetchProjects(filter); 
 
         console.log("Iniciando componente");
 

@@ -61,6 +61,10 @@ const NavBar = () => {
                             </ul>
                         </li>
 
+                        <li className="nav-item">
+                            <Link to="/mis-proyectos" className="nav-link">Mis proyectos</Link>
+                        </li>
+
                         <li className="nav-item nav-link" role="button" onClick={onLogout}>
                             Cerrar sesión
                         </li>
