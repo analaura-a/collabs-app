@@ -1,8 +1,26 @@
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import '../css/Layout.css'
 
 const Layout = ({ children }) => {
+
+    const navigate = useNavigate()
+
+    const onLogout = async () => {
+
+        await fetch('http://localhost:3333/api/auth/logout', {
+            headers: {
+                "auth-token": localStorage.getItem("token"),
+                "Content-Type": "application/json",
+            },
+            method: "DELETE",
+        })
+
+        localStorage.removeItem("token")
+        navigate("/login", { replace: true })
+    }
+
     return (
         <div>
 
@@ -25,7 +43,7 @@ const Layout = ({ children }) => {
                     <div className="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <Link to="/" className="nav-link active">Home</Link>
+                                <Link to="/" className="nav-link">Home</Link>
                             </li>
 
                             <li className="nav-item dropdown">
@@ -46,6 +64,10 @@ const Layout = ({ children }) => {
                                         <Link to="/explorar/colaboradores" className="dropdown-item">Colaboradores</Link>
                                     </li>
                                 </ul>
+                            </li>
+
+                            <li className="nav-item">
+                                <Link to="/" className="nav-link" onClick={onLogout}>Cerrar sesión</Link>
                             </li>
                         </ul>
                     </div>
