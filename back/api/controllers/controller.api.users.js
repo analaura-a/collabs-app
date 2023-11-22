@@ -18,13 +18,14 @@ const getUserById = (req, res) => {
 
     const id = req.params.id;
 
-    service.getUserById(id).then((user) => {
-        if (user) {
-            res.status(200).json(user);
-        } else {
-            res.status(404).json();
-        }
-    });
+    service.getUserById(id)
+        .then((user) => {
+            if (user) {
+                res.status(200).json(user);
+            } else {
+                res.status(404).json();
+            }
+        });
 
 };
 

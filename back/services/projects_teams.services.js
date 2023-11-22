@@ -9,10 +9,25 @@ async function getTeamByProjectId(id) {
 }
 
 //Crear un nuevo equipo
-async function createTeam(team) {
-    const teams = await db.collection("projects_teams").insertOne(team);
-    team._id = teams.insertedId;
-    return team;
+async function createTeam(teamData) {
+
+    // const user = await getUserProfile()
+
+    // const createdTeam = {
+    //     ...teamData,
+    //     members: [{
+    //         ...user,
+    //         project_details: {
+    //             role: "Founder",
+    //             profile: "UX/UI Designer",
+    //             active: true
+    //         }
+    //     }]
+    // }
+
+    const teams = await db.collection("projects_teams").insertOne(teamData);
+    teamData._id = teams.insertedId;
+    return teamData;
 }
 
 //Editar un equipo
