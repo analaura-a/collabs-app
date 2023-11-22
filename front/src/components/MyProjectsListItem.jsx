@@ -8,28 +8,28 @@ const MyProjectsListItem = ({ project }) => {
         "members": []
     })
 
-    // const fetchTeam = () => {
+    const fetchTeam = () => {
 
-    //     try {
-    //         getTeamProjectById(project._id)
-    //             .then((team) => {
-    //                 console.log(team)
-    //                 setTeamProject(team)
-    //             });
+        try {
+            getTeamProjectById(project._id)
+                .then((team) => {
+                    console.log(team)
+                    setTeamProject(team)
+                });
 
-    //     } catch (error) {
-    //         console.error('Error fetching projects: ', error);
-    //     }
-    // };
+        } catch (error) {
+            console.error('Error fetching projects: ', error);
+        }
+    };
 
-    // useEffect(() => {
-    //     fetchTeam();
+    useEffect(() => {
+        fetchTeam();
 
-    //     console.log("Iniciando componente");
+        console.log("Iniciando componente");
 
-    // }, []);
+    }, []);
 
-    // useEffect(() => { }, [teamProject])
+    useEffect(() => { }, [teamProject])
 
 
     return (
@@ -47,11 +47,11 @@ const MyProjectsListItem = ({ project }) => {
                         <h3 className="fs-6">Colaboradores</h3>
                         <ul>
 
-                            {/* {
+                            {
                                 teamProject.members.map((member, index) => (
                                     <li key={index}>{member.name}</li>
                                 ))
-                            } */}
+                            }
 
                         </ul>
                     </div>

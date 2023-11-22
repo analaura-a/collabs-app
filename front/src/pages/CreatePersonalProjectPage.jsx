@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createPersonalProject } from "../services/projects.service";
+import { createTeam } from "../services/projects_teams";
 import { useUserProfile } from '../context/SessionContext'
 
 const CreatePersonalProjectPage = () => {
@@ -65,13 +66,32 @@ const CreatePersonalProjectPage = () => {
 
     }
 
+
     const onSubmit = (e) => {
 
         e.preventDefault();
 
         createPersonalProject(projectData)
-            .then((a) => {
-                // console.log(a)
+            .then((project) => {
+
+                const teamData = {
+                    project_id: project._id,
+                    members: [{
+                        ...project.founder,
+                        project_details: {
+                            role: "Founder",
+                            profile: "Frontend Designer",
+                            active: true
+                        }
+                    }],
+                }
+
+                createTeam(teamData)
+                    .then((team) => {
+                        console.log(team)
+                    })
+                    .catch(err => console.log(err))
+
                 navigate("/mis-proyectos", { replace: true })
             })
             .catch(err => console.log(err))

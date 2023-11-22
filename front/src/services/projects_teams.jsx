@@ -5,6 +5,12 @@ export function getTeamProjectById(id) {
     return call({ uri: `/projects/${id}/team` })
 }
 
+//Crear un nuevo equipo (asociado a un proyecto)
+export function createTeam(teamData) {
+    return call({ uri: "/project_teams", method: "POST", body: teamData })
+}
+
 export default {
-    getTeamProjectById
+    getTeamProjectById,
+    createTeam
 }

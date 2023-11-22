@@ -18,7 +18,7 @@ const MyProjectDashboard = () => {
         
         <section className="mt-5">
 
-            <h1>Dashboard del proyecto {project.name}</h1>
+            <h1>Dashboard del proyecto "{project.name}"</h1>
 
         </section>
 
