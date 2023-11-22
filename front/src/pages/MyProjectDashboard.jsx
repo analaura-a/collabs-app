@@ -68,13 +68,41 @@ const MyProjectDashboard = () => {
 
                 ) : (
 
-                    <div className="mt-4 pb-5">
-                        <p>Haz recibido {requests.length} postulaciones.</p>
-                        <ul>
-                            {requests.map((request, index) => (
-                                <li key={index}>{request.candidate.name}</li>
-                            ))}
-                        </ul>
+                    <div className="mt-3 pb-5">
+                        <p className="fw-semibold text-secondary mt-4 pb-4">Haz recibido {requests.length} postulaciones.</p>
+
+                        <div className="table-responsive">
+
+                            <table className="table">
+
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Colaborador</th>
+                                        <th scope="col">Rol</th>
+                                        <th scope="col">Disponibilidad</th>
+                                        <th scope="col">Acciones</th>
+                                    </tr>
+                                </thead>
+
+                                {requests.map((request, index) => (
+
+                                    <tbody className="table-group-divider" key={index}>
+                                        <tr>
+                                            <td scope="row">{request.candidate.name}</td>
+                                            <td>{request.position}</td>
+                                            <td>{request.candidate.availability}</td>
+                                            <td>
+                                                <button className="btn btn-primary">Agregar al proyecto</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+
+                                ))}
+
+                            </table>
+
+                        </div>
+
                     </div>
                 )
             }
