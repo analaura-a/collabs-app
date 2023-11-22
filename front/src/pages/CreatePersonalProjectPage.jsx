@@ -7,6 +7,14 @@ const CreatePersonalProjectPage = () => {
     const [name, setName] = useState("")
     const [about, setAbout] = useState("")
     const [availability, setAvailability] = useState("Baja")
+    const [collaborators, setCollaborators] = useState([
+        {
+            profile: "UX/UI Designer",
+            required_skills: [
+                "Skill1", "Skill2", "Skill3"
+            ],
+        }
+    ]);
 
     const userProfile = useUserProfile()
 
@@ -23,13 +31,29 @@ const CreatePersonalProjectPage = () => {
         console.log(e.target.value)
     }
 
+    const onChangeProfile = (index, property, value) => {
+
+        const newCollaborators = [...collaborators];
+        newCollaborators[index][property] = value;
+
+        setCollaborators(newCollaborators);
+
+        console.log('Colaboradores:', collaborators);
+    };
+
+    const handleAddCollaborator = () => {
+
+        setCollaborators([...collaborators, { profile: "UX/UI Designer", required_skills: ["Skill1", "Skill2", "Skill3"] }]);
+
+    };
+
     const projectData = {
         type: "Personal",
         status: "Abierto",
         name: name,
         about: about,
         required_availability: availability,
-        open_positions: [{}],
+        open_positions: collaborators,
         founder: userProfile,
         founder_id: userProfile._id,
 
@@ -58,7 +82,8 @@ const CreatePersonalProjectPage = () => {
 
                 <fieldset>
 
-                    <legend className="mb-4 fw-semibold">Información del proyecto</legend>
+                    <legend className="mb-2 fw-semibold">Información del proyecto</legend>
+                    <p className="mb-4">Añade toda la información del proyecto necesaria para que aquellas personas interesadas en colaborar puedan conocer sobre él.</p>
 
                     <div className="mb-4">
                         <label htmlFor="name" className="form-label fw-semibold">Nombre del proyecto (*)</label>
@@ -71,8 +96,7 @@ const CreatePersonalProjectPage = () => {
                     </div>
 
                     <div className="mb-4">
-                        <label htmlFor="availability" className="form-label fw-semibold">Disponibilidad requerida (*)</label>
-                        {/* <input type="text" className="form-control" id="name" name="name" placeholder="Proyecto de..." value={availability} onChange={onChangeAvailability}></input> */}
+                        <label className="form-label fw-semibold">Disponibilidad requerida (*)</label>
                         <select className="form-select" value={availability} onChange={onChangeAvailability}>
                             <option value="Baja">Baja (1-2 horas/día)</option>
                             <option value="Media">Media (3-4 horas/día)</option>
@@ -85,13 +109,38 @@ const CreatePersonalProjectPage = () => {
 
                 <fieldset className="mt-5">
 
-                    <legend className="mb-4 fw-semibold">Colaboradores buscados</legend>
+                    <legend className="mb-2 fw-semibold">Colaboradores buscados</legend>
+                    <p className="mb-4">Añade todos los perfiles que estás buscando para colaborar en el proyecto.</p>
 
-                  
+                    {collaborators.map((collaborator, index) => (
+
+                        <div key={index}>
+
+                            <label className="form-label fw-semibold">Perfil profesional: (*)</label>
+
+                            <select className="form-select" value={collaborator.profile} onChange={(e) => onChangeProfile(index, 'profile', e.target.value)}>
+                                <option value="UX/UI Designer">UX/UI Designer</option>
+                                <option value="Web Designer">Web Designer</option>
+                                <option value="Frontend Developer">Frontend Developer</option>
+                                <option value="Backend Developer">Backend Developer</option>
+                                <option value="Fullstack Developer">Fullstack Developer</option>
+                                <option value="Mobile Developer">Mobile Developer</option>
+                                <option value="No-code Developer">No-code Developer</option>
+                                <option value="Project Manager">Project Manager</option>
+                                <option value="QA Tester">QA Tester</option>
+                            </select>
+
+                        </div>
+
+                    ))}
+
+                    <button type="button" onClick={handleAddCollaborator} className="btn btn-dark mt-3">
+                        Agregar nuevo colaborador
+                    </button>
 
                 </fieldset>
 
-                <button type="submit" className="btn btn-primary">Crear convocatoria</button>
+                <button type="submit" className="btn btn-primary mt-5">Crear convocatoria</button>
 
             </form>
 
