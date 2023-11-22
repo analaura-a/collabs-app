@@ -36,7 +36,7 @@ const MyProjectsListItem = ({ project }) => {
 
         <li className="col">
             <Link
-                to={`/explorar/proyectos`} className="text-decoration-none"
+                to={`/mis-proyectos/${project._id}`} className="text-decoration-none"
             >
                 <div className="card" style={{ width: '18rem' }}>
                     <div className="card-body">
