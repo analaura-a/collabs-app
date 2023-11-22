@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProject } from "../services/projects.service";
 import { getTeamProjectById } from "../services/projects_teams";
+import { getRequestsByProjectId } from "../services/projects_requests";
 import UserListItem from "../components/UserListItem";
 
 const MyProjectDashboard = () => {
@@ -10,6 +11,7 @@ const MyProjectDashboard = () => {
     const [teamProject, setTeamProject] = useState({
         "members": []
     })
+    const [requests, setRequests] = useState([]);
 
     const { id } = useParams();
 
@@ -22,8 +24,15 @@ const MyProjectDashboard = () => {
 
         getTeamProjectById(id)
             .then((team) => {
-                console.log(team)
+                // console.log(team)
                 setTeamProject(team)
+            })
+            .catch(err => console.log(err))
+
+        getRequestsByProjectId(id)
+            .then((requests) => {
+                // console.log(requests)
+                setRequests(requests)
             })
             .catch(err => console.log(err))
 
@@ -48,6 +57,27 @@ const MyProjectDashboard = () => {
                     ))
                 }
             </ul>
+
+            <h2 className="fw-6 mt-5">Postulaciones</h2>
+            <p>Revisa las postulaciones de las personas interesadas en unirse a colaborar en el proyecto.</p>
+
+            {
+                requests.length === 0 ? (
+
+                    <p className="fw-semibold text-secondary mt-4 pb-4">Aún no has recibido postulaciones.</p>
+
+                ) : (
+
+                    <div className="mt-4 pb-5">
+                        <p>Haz recibido {requests.length} postulaciones.</p>
+                        <ul>
+                            {requests.map((request, index) => (
+                                <li key={index}>{request.candidate.name}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )
+            }
 
         </section>
 
