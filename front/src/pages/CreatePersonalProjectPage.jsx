@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createPersonalProject } from "../services/projects.service";
 import { useUserProfile } from '../context/SessionContext'
 
@@ -13,10 +14,14 @@ const CreatePersonalProjectPage = () => {
             required_skills: [
                 "Skill1", "Skill2", "Skill3"
             ],
+            desired_skills: [
+                "Skill1", "Skill2", "Skill3"
+            ],
         }
     ]);
 
     const userProfile = useUserProfile()
+    const navigate = useNavigate()
 
     const onChangeName = (e) => {
         setName(e.target.value)
@@ -43,7 +48,7 @@ const CreatePersonalProjectPage = () => {
 
     const handleAddCollaborator = () => {
 
-        setCollaborators([...collaborators, { profile: "UX/UI Designer", required_skills: ["Skill1", "Skill2", "Skill3"] }]);
+        setCollaborators([...collaborators, { profile: "UX/UI Designer", required_skills: ["Skill1", "Skill2", "Skill3"], desired_skills: ["Skill1", "Skill2", "Skill3"] }]);
 
     };
 
@@ -52,6 +57,7 @@ const CreatePersonalProjectPage = () => {
         status: "Abierto",
         name: name,
         about: about,
+        img: "https://random.imagecdn.app/500/300",
         required_availability: availability,
         open_positions: collaborators,
         founder: userProfile,
@@ -65,8 +71,8 @@ const CreatePersonalProjectPage = () => {
 
         createPersonalProject(projectData)
             .then((a) => {
-                console.log(a)
-
+                // console.log(a)
+                navigate("/mis-proyectos", { replace: true })
             })
             .catch(err => console.log(err))
 
@@ -114,7 +120,7 @@ const CreatePersonalProjectPage = () => {
 
                     {collaborators.map((collaborator, index) => (
 
-                        <div key={index}>
+                        <div key={index} className="mt-3">
 
                             <label className="form-label fw-semibold">Perfil profesional: (*)</label>
 
