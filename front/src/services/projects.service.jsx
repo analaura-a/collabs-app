@@ -37,8 +37,14 @@ export function getProject(id) {
     return call({ uri: `projects/${id}` })
 }
 
+//Crear una nueva convocatoria de proyecto (personal)
+export function createPersonalProject(projectData) {
+    return call({ uri: "/projects/personal", method: "POST", body: projectData })
+}
+
 export default {
     getProjects,
     getProjectsCreatedByUser,
-    getProject
+    getProject,
+    createPersonalProject
 }

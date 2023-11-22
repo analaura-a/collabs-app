@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import MyProjectsListItem from "../components/MyProjectsListItem";
 import { getProjectsCreatedByUser } from "../services/projects.service";
 import { useUserProfile } from '../context/SessionContext'
@@ -40,7 +41,10 @@ const MyProjectsPage = () => {
 
             <div className="d-md-flex justify-content-between">
                 <h1>Mis proyectos</h1>
-                <a href="" className="btn btn-primary">Crear convocatoria para proyecto</a>
+                <Link
+                    to={"/crear-convocatoria"} className="btn btn-primary"
+                >Crear convocatoria para proyecto</Link>
+
             </div>
 
             <ul className="list-unstyled row row-cols-1 row-cols-md-3 g-4 mt-5">
