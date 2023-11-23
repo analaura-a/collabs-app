@@ -4,6 +4,7 @@ import { getProject } from "../services/projects.service";
 import { getTeamProjectById } from "../services/projects_teams";
 import { getRequestsByProjectId } from "../services/projects_requests";
 import UserListItem from "../components/UserListItem";
+import { addTeamMember } from "../services/projects_teams";
 
 const MyProjectDashboard = () => {
 
@@ -39,6 +40,28 @@ const MyProjectDashboard = () => {
     }, []);
 
     useEffect(() => { }, [teamProject])
+
+    const onAddTeamMember = (request, teamMember) => {
+
+        // console.log(teamMember)
+        // console.log(request)
+
+        const teamMemberData = {
+            ...teamMember,
+            project_details: {
+                role: "Collaborator",
+                profile: request.position,
+                active: true
+            }
+        }
+
+        addTeamMember(project._id, teamMemberData)
+            .then((teamMemberAdded) => {
+                console.log(teamMemberAdded)
+            })
+            .catch(err => console.log(err))
+
+    }
 
     return project.name !== undefined ? (
 
@@ -92,7 +115,7 @@ const MyProjectDashboard = () => {
                                             <td>{request.position}</td>
                                             <td>{request.candidate.availability}</td>
                                             <td>
-                                                <button className="btn btn-primary">Agregar al proyecto</button>
+                                                <button className="btn btn-primary" onClick={() => onAddTeamMember(request, request.candidate)}>Agregar al proyecto</button>
                                             </td>
                                         </tr>
                                     </tbody>
