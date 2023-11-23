@@ -12,7 +12,13 @@ export function createRequest(requestData) {
     })
 }
 
+//Eliminar una postulación
+export function deleteRequest(id) {
+    return call({ uri: `project_requests/${id}`, method: "DELETE" })
+}
+
 export default {
     getRequestsByProjectId,
-    createRequest
+    createRequest,
+    deleteRequest
 }
