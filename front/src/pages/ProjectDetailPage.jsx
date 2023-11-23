@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { getProject } from "../services/projects.service";
+import { createRequest } from "../services/projects_requests";
+import { useUserProfile } from '../context/SessionContext'
 
 const ProjectDetailPage = () => {
 
     const [project, setProject] = useState([]);
+    const [selectedRole, setSelectedRole] = useState('');
+
+    const userProfile = useUserProfile()
+
     const { id } = useParams();
-    // const navigate = useNavigate();
 
     useEffect(() => {
         console.log("Iniciando componente");
@@ -16,6 +20,31 @@ const ProjectDetailPage = () => {
         getProject(id)
             .then((data) => setProject(data));
     }, []);
+
+    const onChangeSelectedRole = (event) => {
+        const selected = event.target.value;
+        setSelectedRole(selected)
+        console.log(selected)
+    }
+
+    const requestData = {
+        project_id: project._id,
+        candidate: userProfile,
+        position: selectedRole,
+        status: "Pending",
+    }
+
+    const onSubmit = (e) => {
+
+        e.preventDefault();
+
+        createRequest(requestData)
+            .then((request) => {
+                console.log(request)
+            })
+            .catch(err => console.log(err))
+
+    }
 
     return (
         project.name !== undefined ? (
@@ -94,15 +123,19 @@ const ProjectDetailPage = () => {
                 <div className="mt-5 pb-5">
                     <h2>Quiero colaborar como...</h2>
 
-                    <form action="">
+                    <form onSubmit={onSubmit}>
                         {
                             project.open_positions.map((position, index) => (
 
                                 <div className="form-check" key={index}>
-                                    <input className="form-check-input" type="radio" name="default" id={index}></input>
-                                    <label className="form-check-label" htmlFor={index}>
+
+                                    <input className="form-check-input" type="radio" name="roles" id={position.profile} value={position.profile} checked={selectedRole === position.profile}
+                                        onChange={onChangeSelectedRole}></input>
+
+                                    <label className="form-check-label" htmlFor={position.profile}>
                                         {position.profile}
                                     </label>
+
                                 </div>
 
                             ))
