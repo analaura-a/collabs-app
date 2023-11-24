@@ -36,7 +36,7 @@ const MyProjectsPage = () => {
 
     useEffect(() => { }, [projects])
 
-    return (
+    return projects.length != 0 ? (
         <section className="mt-5">
 
             <div className="d-md-flex justify-content-between">
@@ -54,6 +54,21 @@ const MyProjectsPage = () => {
                 }
 
             </ul>
+
+        </section >
+    ) : (
+
+        <section className="mt-5">
+
+            <div className="d-md-flex justify-content-between">
+                <h1>Mis proyectos</h1>
+                <Link
+                    to={"/crear-convocatoria"} className="btn btn-primary"
+                >Crear convocatoria para proyecto</Link>
+
+            </div>
+
+            <p className="mt-5 fs-5 text-center text-secondary">Aún no has creado ninguna convocatoria para proyecto.</p>
 
         </section >
     )

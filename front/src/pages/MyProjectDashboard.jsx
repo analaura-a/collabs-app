@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { getProject } from "../services/projects.service";
 import { getTeamProjectById } from "../services/projects_teams";
 import { getRequestsByProjectId, deleteRequest } from "../services/projects_requests";
@@ -112,21 +112,31 @@ const MyProjectDashboard = () => {
                                         <th scope="col">Acciones</th>
                                     </tr>
                                 </thead>
+                                <tbody className="table-group-divider">
 
-                                {requests.map((request, index) => (
+                                    {requests.map((request, index) => (
 
-                                    <tbody className="table-group-divider" key={index}>
-                                        <tr>
-                                            <td scope="row">{request.candidate.name}</td>
+
+                                        <tr key={index}>
+
+                                            <td scope="row">
+                                                <Link
+                                                    to={`/user/${request.candidate._id}`} className="btn btn-primary d-inline-block"
+                                                >
+                                                    {request.candidate.name + ' ' + request.candidate.last_name}
+                                                </Link>
+                                            </td>
                                             <td>{request.position}</td>
                                             <td>{request.candidate.availability}</td>
                                             <td>
                                                 <button className="btn btn-primary" onClick={() => onAddTeamMember(request, request.candidate)}>Agregar al proyecto</button>
                                             </td>
-                                        </tr>
-                                    </tbody>
 
-                                ))}
+                                        </tr>
+
+                                    ))}
+
+                                </tbody>
 
                             </table>
 
