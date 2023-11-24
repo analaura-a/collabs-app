@@ -37,6 +37,7 @@ const NavBar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul className="navbar-nav">
+
                         <li className="nav-item">
                             <Link to="/" className="nav-link">Home</Link>
                         </li>
@@ -65,13 +66,14 @@ const NavBar = () => {
                             <Link to="/mis-proyectos" className="nav-link">Mis proyectos</Link>
                         </li>
 
+                        <li className="nav-item">
+                            <Link to={`/user/${userProfile._id}`} className="nav-link">Mi perfil ({userProfile.name})</Link>
+                        </li>
+
                         <li className="nav-item nav-link" role="button" onClick={onLogout}>
                             Cerrar sesión
                         </li>
 
-                        <li className="nav-item">
-                            <Link to={`/user/${userProfile._id}`} className="nav-link">Mi perfil ({userProfile.name})</Link>
-                        </li>
                     </ul>
                 </div>
             </div>
