@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getRequestsByUserId } from "../services/projects_requests";
+import { getRequestsByUserId, deleteRequest } from "../services/projects_requests";
 import { useUserProfile } from '../context/SessionContext'
 
 const SentRequests = () => {
@@ -23,6 +23,16 @@ const SentRequests = () => {
     }, []);
 
     useEffect(() => { }, [requests])
+
+    const onDeleteRequest = (id) => {
+
+        deleteRequest(id)
+            .then((deletedRequest) => {
+                console.log(deletedRequest)
+            })
+            .catch(err => console.log(err))
+
+    }
 
     return (
         <section className="mt-5">
@@ -53,7 +63,7 @@ const SentRequests = () => {
                                         <td>Nombre del organizador</td>
                                         <td>{request.position}</td>
                                         <td>{request.status}</td>
-                                        <td><button className="btn btn-primary">Cancelar postulación</button></td>
+                                        <td><button className="btn btn-primary" onClick={() => onDeleteRequest(request._id)}>Cancelar postulación</button></td>
                                     </tr>
                                 ))}
 
