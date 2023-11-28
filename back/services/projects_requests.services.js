@@ -5,7 +5,7 @@ const db = client.db("AH20232CP1");
 
 //Obtener las postulaciones de un proyecto en particular
 async function getRequestsByProjectId(id) {
-    return db.collection("projects_requests").find({ project_id: id }).toArray();
+    return db.collection("projects_requests").find({ project_id: id, status: 'Pending' }).toArray();
 }
 
 //Obtener las postulaciones enviadas por un usuario en particular

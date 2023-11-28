@@ -67,6 +67,10 @@ const NavBar = () => {
                         </li>
 
                         <li className="nav-item">
+                            <Link to="/mis-postulaciones" className="nav-link">Mis postulaciones</Link>
+                        </li>
+
+                        <li className="nav-item">
                             <Link to={`/user/${userProfile._id}`} className="nav-link">Mi perfil ({userProfile.name})</Link>
                         </li>
 

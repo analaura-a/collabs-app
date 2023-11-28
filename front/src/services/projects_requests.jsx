@@ -7,7 +7,7 @@ export function getRequestsByProjectId(id) {
 
 //Obtener postulaciones enviadas por un usuario en particular
 export function getRequestsByUserId(id) {
-    return call({ uri: `/users/${id}/requests` })
+    return call({ uri: `users/${id}/requests` })
 }
 
 //Crear una nueva postulación para un proyecto particular

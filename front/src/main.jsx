@@ -13,6 +13,7 @@ import PrivateRoute from './components/PrivateRoute.jsx';
 import MyProjectsPage from './pages/MyProjectsPage.jsx';
 import CreatePersonalProjectPage from './pages/CreatePersonalProjectPage.jsx';
 import MyProjectDashboard from './pages/MyProjectDashboard.jsx';
+import SentRequests from './pages/SentRequestsPage.jsx';
 
 const routes = createBrowserRouter([
 
@@ -48,6 +49,10 @@ const routes = createBrowserRouter([
       {
         path: "/crear-convocatoria",
         element: <CreatePersonalProjectPage />,
+      },
+      {
+        path: "/mis-postulaciones",
+        element: <SentRequests />,
       }
     ]
   },
