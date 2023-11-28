@@ -15,6 +15,21 @@ const getRequestsByProjectId = (req, res) => {
 
 }
 
+//Obtener las postulaciones enviadas por un usuario en particular
+const getRequestsByUserId = (req, res) => {
+
+    const id = req.params.id;
+
+    service.getRequestsByUserId(id).then((requests) => {
+        if (requests) {
+            res.status(200).json(requests);
+        } else {
+            res.status(404).json();
+        }
+    });
+
+}
+
 //Agregar una nueva postulación
 const createRequest = async (req, res) => {
 
@@ -49,6 +64,7 @@ const deleteRequest = (req, res) => {
 
 export {
     getRequestsByProjectId,
+    getRequestsByUserId,
     createRequest,
     deleteRequest
 }

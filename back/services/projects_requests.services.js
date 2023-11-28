@@ -8,6 +8,11 @@ async function getRequestsByProjectId(id) {
     return db.collection("projects_requests").find({ project_id: id }).toArray();
 }
 
+//Obtener las postulaciones enviadas por un usuario en particular
+async function getRequestsByUserId(id) {
+    return db.collection("projects_requests").find({ "candidate._id": id }).toArray();
+}
+
 //Agregar una nueva postulación
 async function createRequest(request) {
     const requests = await db.collection("projects_requests").insertOne(request);
@@ -24,6 +29,7 @@ async function deleteRequest(id) {
 
 export {
     getRequestsByProjectId,
+    getRequestsByUserId,
     createRequest,
     deleteRequest
 }

@@ -8,6 +8,9 @@ const route = Router();
 //Obtener las postulaciones de un proyecto en particular
 route.get('/projects/:id/requests', controllers.getRequestsByProjectId);
 
+//Obtener las postulaciones enviadas por un usuario en particular
+route.get('/users/:id/requests', controllers.getRequestsByUserId);
+
 //Agregar una nueva postulación
 route.post('/project_requests', [validateRequestCreate], controllers.createRequest);
 
