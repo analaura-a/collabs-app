@@ -7,6 +7,14 @@ const requestSchemaCreate = yup.object({
     status: yup.string().required(),
 })
 
+const requestSchemaPatch = yup.object({
+    project_id: yup.string(),
+    candidate: yup.object(),
+    position: yup.string(),
+    status: yup.string(),
+})
+
 export {
-    requestSchemaCreate
+    requestSchemaCreate,
+    requestSchemaPatch
 }

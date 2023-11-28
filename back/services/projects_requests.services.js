@@ -21,6 +21,11 @@ async function createRequest(request) {
     return request;
 }
 
+async function editRequest(id, request) {
+    const editedRequest = await db.collection("projects_requests").updateOne({ _id: new ObjectId(id) }, { $set: request });
+    return editedRequest;
+}
+
 //Eliminar una postulación
 async function deleteRequest(id) {
     const deletedRequest = await db.collection("projects_requests").deleteOne({ _id: new ObjectId(id) })
@@ -31,5 +36,6 @@ export {
     getRequestsByProjectId,
     getRequestsByUserId,
     createRequest,
+    editRequest,
     deleteRequest
 }

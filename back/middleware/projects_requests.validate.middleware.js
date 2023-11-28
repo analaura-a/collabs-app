@@ -1,4 +1,4 @@
-import { requestSchemaCreate } from '../schemas/projects_requests.schema.js'
+import { requestSchemaCreate, requestSchemaPatch } from '../schemas/projects_requests.schema.js'
 
 function validateRequestCreate(req, res, next) {
 
@@ -10,6 +10,17 @@ function validateRequestCreate(req, res, next) {
         .catch((error) => res.status(500).json(error))
 }
 
+function validateRequestEdit(req, res, next) {
+
+    requestSchemaPatch.validate(req.body, { abortEarly: false })
+        .then((request) => {
+            req.body = request
+            next()
+        })
+        .catch((error) => res.status(500).json(error))
+}
+
 export {
-    validateRequestCreate
+    validateRequestCreate,
+    validateRequestEdit
 }

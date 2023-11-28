@@ -48,6 +48,22 @@ const createRequest = async (req, res) => {
 
 }
 
+//Editar una postulación
+const editRequest = async (req, res) => {
+
+    const id = req.params.id;
+
+    service.editRequest(id, req.body)
+        .then((editedRequest) => {
+            if (editedRequest) {
+                res.status(200).json(editedRequest);
+            } else {
+                res.status(404).json();
+            }
+        });
+
+}
+
 //Eliminar una postulación
 const deleteRequest = (req, res) => {
 
@@ -66,5 +82,6 @@ export {
     getRequestsByProjectId,
     getRequestsByUserId,
     createRequest,
+    editRequest,
     deleteRequest
 }
