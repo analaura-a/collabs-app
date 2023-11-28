@@ -17,6 +17,13 @@ export function createRequest(requestData) {
     })
 }
 
+//Editar una postulación
+export function editRequest(id, requestData) {
+    return call({
+        uri: `project_requests/${id}`, method: "PATCH", body: requestData
+    })
+}
+
 //Eliminar una postulación
 export function deleteRequest(id) {
     return call({ uri: `project_requests/${id}`, method: "DELETE" })
@@ -26,5 +33,6 @@ export default {
     getRequestsByProjectId,
     getRequestsByUserId,
     createRequest,
+    editRequest,
     deleteRequest
 }

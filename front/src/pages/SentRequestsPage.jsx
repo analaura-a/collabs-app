@@ -63,7 +63,13 @@ const SentRequests = () => {
                                         <td>Nombre del organizador</td>
                                         <td>{request.position}</td>
                                         <td>{request.status}</td>
-                                        <td><button className="btn btn-primary" onClick={() => onDeleteRequest(request._id)}>Cancelar postulación</button></td>
+
+                                        {request.status === "Aprobada" ? (
+                                            <></>
+                                        ) : (
+                                            <td><button className="btn btn-primary" onClick={() => onDeleteRequest(request._id)}>Cancelar postulación</button></td>
+                                        )}
+
                                     </tr>
                                 ))}
 
@@ -83,7 +89,7 @@ const SentRequests = () => {
                 </div>
             )}
 
-        </section>
+        </section >
     )
 
 }

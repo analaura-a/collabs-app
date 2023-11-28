@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { getProject } from "../services/projects.service";
 import { getTeamProjectById } from "../services/projects_teams";
-import { getRequestsByProjectId, deleteRequest } from "../services/projects_requests";
+import { getRequestsByProjectId, editRequest } from "../services/projects_requests";
 import UserListItem from "../components/UserListItem";
 import { addTeamMember } from "../services/projects_teams";
 
@@ -59,9 +59,9 @@ const MyProjectDashboard = () => {
             .then((teamMemberAdded) => {
                 console.log(teamMemberAdded)
 
-                deleteRequest(request._id)
-                    .then((deletedRequest) => {
-                        console.log(deletedRequest)
+                editRequest(request._id, { status: "Aprobada" })
+                    .then((updatedRequest) => {
+                        console.log(updatedRequest)
                     })
                     .catch(err => console.log(err))
             })
