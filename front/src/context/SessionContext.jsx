@@ -30,12 +30,20 @@ function SessionProvider({ children }) {
     useEffect(() => {
 
         getUserProfile()
-            .then((profile) => setUserProfile(profile));
+            .then((profile) => {
+                setUserProfile(profile)
+
+                //Setearlo en localstorage
+                localStorage.setItem("user", JSON.stringify(profile))
+
+                //Si está seteado...
+                
+            });
 
     }, []);
 
     return (
-        <SessionContext.Provider value={{userProfile}}>
+        <SessionContext.Provider value={{ userProfile }}>
             {children}
         </SessionContext.Provider>
     )

@@ -13,6 +13,7 @@ const NavBar = () => {
             .then((account) => { console.log(account) })
 
         localStorage.removeItem("token")
+        localStorage.removeItem("user")
         navigate("/login", { replace: true })
     }
 

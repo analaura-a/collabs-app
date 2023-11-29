@@ -8,7 +8,7 @@ const MyProjectsPage = () => {
 
     const [projects, setProjects] = useState([]);
 
-    const userProfile = useUserProfile()
+    const userProfile = JSON.parse(localStorage.getItem("user"))
 
     const id = userProfile._id;
     // console.log(id)

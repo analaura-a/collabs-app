@@ -7,7 +7,7 @@ const SentRequests = () => {
 
     const [requests, setRequests] = useState([]);
 
-    const userProfile = useUserProfile()
+    const userProfile = JSON.parse(localStorage.getItem("user"))
 
     useEffect(() => {
 

@@ -71,10 +71,10 @@ const deleteRequest = (req, res) => {
 
     service
         .deleteRequest(id)
-        .then((deletedRequest) => {
-            res.status(204).json(deletedRequest);
+        .then(() => {
+            res.status(204).json();
         })
-        .catch((error) => res.status(500).json(error));
+        .catch((error) => res.status(500).json());
 
 }
 

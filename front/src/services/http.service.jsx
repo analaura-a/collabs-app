@@ -1,4 +1,8 @@
+// import { useNavigate } from "react-router-dom";
+
 export async function call({ uri, method = "GET", body = undefined }) {
+
+    // const navigate = useNavigate()
 
     return fetch(`http://localhost:3333/api/${uri}`, {
         headers: {
