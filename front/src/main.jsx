@@ -14,6 +14,7 @@ import MyProjectsPage from './pages/MyProjectsPage.jsx';
 import CreatePersonalProjectPage from './pages/CreatePersonalProjectPage.jsx';
 import MyProjectDashboard from './pages/MyProjectDashboard.jsx';
 import SentRequests from './pages/SentRequestsPage.jsx';
+import SignupPage from './pages/SignupPage.jsx';
 
 const routes = createBrowserRouter([
 
@@ -60,7 +61,11 @@ const routes = createBrowserRouter([
     path: "/login",
     element: <LoginPage />,
     errorElement: <Error404Page />,
-
+  },
+  {
+    path: "/signup",
+    element: <SignupPage />,
+    errorElement: <Error404Page />,
   }
 
 ])

@@ -10,7 +10,13 @@ export function getUserById(id) {
     return call({ uri: `users/${id}` })
 }
 
+//Crear nuevo perfil de usuario (asociado a una cuenta creada)
+export function createUser(userData) {
+    return call({ uri: "/users", method: "POST", body: userData })
+}
+
 export default {
     getUsers,
-    getUserById
+    getUserById,
+    createUser
 }
