@@ -60,7 +60,11 @@ const SentRequests = () => {
                                 {requests.map((request, index) => (
                                     <tr key={index}>
                                         <td scope="row">{request.project.name}</td>
-                                        <td>{request.project.founder.name + " " + request.project.founder.last_name}</td>
+                                        <td><Link
+                                            to={`/user/${request.project.founder._id}`} className="btn btn-outline-secondary d-inline-block"
+                                        >
+                                            {request.project.founder.name + " " + request.project.founder.last_name}
+                                        </Link></td>
                                         <td>{request.position}</td>
                                         <td>{request.status}</td>
 
@@ -72,10 +76,10 @@ const SentRequests = () => {
                                             </Link></td>
                                         ) : (
                                             <td><Link
-                                            to={`/explorar/proyectos/${request.project_id}`} className="btn btn-primary d-inline-block"
-                                        >
-                                            Ver convocatoria
-                                        </Link> <button className="btn btn-primary" onClick={() => onDeleteRequest(request._id)}>Cancelar postulación</button></td>
+                                                to={`/explorar/proyectos/${request.project_id}`} className="btn btn-primary d-inline-block"
+                                            >
+                                                Ver convocatoria
+                                            </Link> <button className="btn btn-primary" onClick={() => onDeleteRequest(request._id)}>Cancelar postulación</button></td>
                                         )}
 
                                     </tr>

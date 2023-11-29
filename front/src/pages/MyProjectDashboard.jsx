@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { getProject } from "../services/projects.service";
 import { getTeamProjectById } from "../services/projects_teams";
 import { getRequestsByProjectId, editRequest } from "../services/projects_requests";
-import UserListItem from "../components/UserListItem";
+import TeamMemberCard from "../components/TeamMemberCard";
 import { addTeamMember } from "../services/projects_teams";
 
 const MyProjectDashboard = () => {
@@ -82,7 +82,7 @@ const MyProjectDashboard = () => {
             <ul className="mt-2 list-unstyled row row-cols-1 row-cols-md-3 g-4">
                 {
                     teamProject.members.map((member, index) => (
-                        <UserListItem key={index} user={member}></UserListItem>
+                        <TeamMemberCard key={index} user={member}></TeamMemberCard>
                     ))
                 }
             </ul>
@@ -121,7 +121,7 @@ const MyProjectDashboard = () => {
 
                                             <td scope="row">
                                                 <Link
-                                                    to={`/user/${request.candidate._id}`} className="btn btn-primary d-inline-block"
+                                                    to={`/user/${request.candidate._id}`} className="btn btn-outline-secondary d-inline-block"
                                                 >
                                                     {request.candidate.name + ' ' + request.candidate.last_name}
                                                 </Link>

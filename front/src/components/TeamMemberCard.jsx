@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 
-const UserListItem = ({ user }) => {
+const TeamMemberCard = ({ user }) => {
 
-    const { _id, name, last_name, bio, location, profile_pic, professional_profile } = user;
+    const { _id, name, last_name, bio, location, profile_pic, project_details } = user;
 
     return (
 
@@ -14,7 +14,8 @@ const UserListItem = ({ user }) => {
                 <div className="card h-100">
                     <img src={profile_pic} className="card-img-top" alt={name} />
                     <div className="card-body">
-                        <h2 className="card-title">{name} {last_name}</h2>
+                        <span className="badge rounded-pill text-bg-primary" style={{ width: 'fit-content' }}>{project_details.role}</span>
+                        <h2 className="card-title mt-3">{name} {last_name}</h2>
                         <p className="card-text text-secondary">
                             {location}
                         </p>
@@ -22,26 +23,18 @@ const UserListItem = ({ user }) => {
                             {bio}
                         </p>
 
-                        <h3 className="card-text fs-4">Perfil profesional</h3>
-                        <ul>
-                            {
-                                professional_profile.map((profile, index) => (
-                                    <li key={index}>{profile}</li>
-                                ))
-                            }
-
-                        </ul>
-
+                        <h3 className="card-text fs-5">Rol en el proyecto</h3>
+                        <p>{project_details.profile}</p>
                     </div>
                 </div>
             </Link>
-        </li>
+        </li >
 
     );
 };
 
-UserListItem.propTypes = {
+TeamMemberCard.propTypes = {
     user: PropTypes.object.isRequired
 }
 
-export default UserListItem;
+export default TeamMemberCard;
