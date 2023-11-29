@@ -23,7 +23,7 @@ const UserProfilePage = () => {
 
         console.log("Iniciando componente: UserProfilePage");
 
-    }, []);
+    }, [id]);
 
     return (
         user.name !== undefined ? (

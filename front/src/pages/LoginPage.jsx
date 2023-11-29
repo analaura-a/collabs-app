@@ -46,7 +46,7 @@ const LoginPage = () => {
                 <form onSubmit={onSubmit} className="mt-5">
                     <div className="mb-3">
                         <label htmlFor="email" className="form-label fw-medium">Correo electrónico</label>
-                        <input type="email" className="form-control" id="email" placeholder="name@example.com" onChange={onChangeEmail} value={email}></input>
+                        <input type="email" className="form-control" id="email" placeholder="nombre@ejemplo.com" onChange={onChangeEmail} value={email}></input>
                     </div>
                     <div className="mb-3">
                         <label htmlFor="password" className="form-label fw-medium">Contraseña</label>

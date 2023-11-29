@@ -57,11 +57,25 @@ const MyProjectDashboard = () => {
 
         addTeamMember(project._id, teamMemberData)
             .then((teamMemberAdded) => {
+
                 console.log(teamMemberAdded)
 
+                // setTeamProject((oldTeam) => [
+                //     ...oldTeam,
+                //     teamMemberAdded
+                // ])
+
                 editRequest(request._id, { status: "Aprobada" })
-                    .then((updatedRequest) => {
+                    .then(async (updatedRequest) => {
                         console.log(updatedRequest)
+
+                        //Actualizo la interfaz con los nuevos cambios
+                        const newTeam = await getTeamProjectById(id)
+                        setTeamProject(newTeam)     
+
+                        const newRequests = await getRequestsByProjectId(id)
+                        setRequests(newRequests)  
+
                     })
                     .catch(err => console.log(err))
             })
