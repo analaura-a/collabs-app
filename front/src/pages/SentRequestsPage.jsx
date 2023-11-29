@@ -59,15 +59,23 @@ const SentRequests = () => {
 
                                 {requests.map((request, index) => (
                                     <tr key={index}>
-                                        <td scope="row">{request.project_id}</td>
-                                        <td>Nombre del organizador</td>
+                                        <td scope="row">{request.project.name}</td>
+                                        <td>{request.project.founder.name + " " + request.project.founder.last_name}</td>
                                         <td>{request.position}</td>
                                         <td>{request.status}</td>
 
                                         {request.status === "Aprobada" ? (
-                                            <></>
+                                            <td><Link
+                                                to={`/explorar/proyectos/${request.project_id}`} className="btn btn-primary d-inline-block"
+                                            >
+                                                Ver convocatoria
+                                            </Link></td>
                                         ) : (
-                                            <td><button className="btn btn-primary" onClick={() => onDeleteRequest(request._id)}>Cancelar postulación</button></td>
+                                            <td><Link
+                                            to={`/explorar/proyectos/${request.project_id}`} className="btn btn-primary d-inline-block"
+                                        >
+                                            Ver convocatoria
+                                        </Link> <button className="btn btn-primary" onClick={() => onDeleteRequest(request._id)}>Cancelar postulación</button></td>
                                         )}
 
                                     </tr>

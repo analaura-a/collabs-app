@@ -29,6 +29,7 @@ const ProjectDetailPage = () => {
 
     const requestData = {
         project_id: project._id,
+        project: project,
         candidate: userProfile,
         position: selectedRole,
         status: "Pending",
