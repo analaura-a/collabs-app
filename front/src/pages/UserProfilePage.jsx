@@ -1,25 +1,29 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { getUserById } from "../services/users.service";
 
 const UserProfilePage = () => {
 
     const [user, setUser] = useState([]);
     const { id } = useParams();
-    const navigate = useNavigate();
+
+    const fetchUser = () => {
+
+        try {
+            getUserById(id)
+                .then((user) => setUser(user));
+
+        } catch (error) {
+            console.error('Error fetching projects: ', error);
+        }
+    };
 
     useEffect(() => {
-        console.log("Iniciando componente");
-        fetch(`http://localhost:3333/api/users/${id}`)
-            .then((res) => {
-                if (!res.ok || res.status === 401) {
-                    navigate("/explorar/colaboradores", { replace: true });
-                }
-                return res.json();
-            })
-            .then((data) => setUser(data));
-    }, []);
+        fetchUser();
 
+        console.log("Iniciando componente: UserProfilePage");
+
+    }, []);
 
     return (
         user.name !== undefined ? (

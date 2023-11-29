@@ -1,15 +1,28 @@
 import React, { useEffect, useState } from "react";
 import UserList from '../components/UserList'
+import { getUsers } from "../services/users.service";
 
 const ExploreUsersPage = () => {
 
     const [users, setUsers] = useState([])
 
+    const fetchUsers = () => {
+
+        try {
+            getUsers()
+                .then((users) => setUsers(users));
+
+        } catch (error) {
+            console.error('Error fetching projects: ', error);
+        }
+    };
+
     useEffect(() => {
-        fetch('http://localhost:3333/api/users')
-            .then((res) => res.json())
-            .then((data) => setUsers(data));
-    }, [])
+        fetchUsers();
+
+        console.log("Iniciando componente");
+
+    }, []);
 
     useEffect(() => { }, [users])
 
