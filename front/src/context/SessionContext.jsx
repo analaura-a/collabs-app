@@ -33,10 +33,8 @@ function SessionProvider({ children }) {
             .then((profile) => {
                 setUserProfile(profile)
 
-                //Setearlo en localstorage
+                //Guardarlo en localstorage
                 localStorage.setItem("user", JSON.stringify(profile))
-
-                //Si está seteado...
                 
             });
 

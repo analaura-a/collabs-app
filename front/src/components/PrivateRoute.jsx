@@ -1,5 +1,5 @@
-import { Navigate, useLocation, useNavigate } from "react-router-dom"
-import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom"
+import { useEffect } from "react";
 
 const PrivateRoute = ({ children }) => {
 
@@ -7,18 +7,12 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation()
 
     useEffect(() => {
-        
-        console.log(navigate)
 
         if (!localStorage.getItem("token")) {
             navigate("/login")
         }
 
     }, [location.pathname]);
-
-    if (!localStorage.getItem("token")) {
-        return <Navigate to="/login" />
-    }
 
     return children
 }
