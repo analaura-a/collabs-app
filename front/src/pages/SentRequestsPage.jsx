@@ -27,14 +27,14 @@ const SentRequests = () => {
     const onDeleteRequest = (id) => {
 
         deleteRequest(id)
-            .then(async (deletedRequest) => {
-                console.log(deletedRequest)
+            .then(async () => {
 
                 //Actualizo la interfaz con los nuevos cambios
                 const newRequests = await getRequestsByUserId(userProfile._id)
                 setRequests(newRequests)
+
             })
-            .catch(err => console.log(err))
+            .catch((err) => console.log(err))
 
     }
 

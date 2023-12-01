@@ -19,9 +19,14 @@ export async function call({ uri, method = "GET", body = undefined }) {
                 throw await response.json()
             }
 
+            if (response.status === 204) {
+                return response
+            }
+
             return response.json();
-            
-        });
+
+        })
+        .catch((error) => console.log(error));
 }
 
 export default {
