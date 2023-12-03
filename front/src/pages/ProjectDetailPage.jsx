@@ -121,31 +121,37 @@ const ProjectDetailPage = () => {
                     <p>Frontend Developer</p>
                 </div>
 
-                <div className="mt-5 pb-5">
-                    <h2>Quiero colaborar como...</h2>
+                {project.type === "Personal" ? (
+                    <div className="mt-5 pb-5">
+                        <h2>Quiero colaborar como...</h2>
 
-                    <form onSubmit={onSubmit}>
-                        {
-                            project.open_positions.map((position, index) => (
+                        <form onSubmit={onSubmit}>
+                            {
+                                project.open_positions.map((position, index) => (
 
-                                <div className="form-check" key={index}>
+                                    <div className="form-check" key={index}>
 
-                                    <input className="form-check-input" type="radio" name="roles" id={position.profile} value={position.profile} checked={selectedRole === position.profile}
-                                        onChange={onChangeSelectedRole}></input>
+                                        <input className="form-check-input" type="radio" name="roles" id={position.profile} value={position.profile} checked={selectedRole === position.profile}
+                                            onChange={onChangeSelectedRole}></input>
 
-                                    <label className="form-check-label" htmlFor={position.profile}>
-                                        {position.profile}
-                                    </label>
+                                        <label className="form-check-label" htmlFor={position.profile}>
+                                            {position.profile}
+                                        </label>
 
-                                </div>
+                                    </div>
 
-                            ))
-                        }
-                        <button type="submit" className="btn btn-primary mt-3">Postularme</button>
-                    </form>
+                                ))
+                            }
+                            <button type="submit" className="btn btn-primary mt-3 mb-5">Postularme</button>
+                        </form>
 
 
-                </div>
+                    </div>
+
+                ) : (
+                    <a className="btn btn-primary mt-3 mb-5" href={project.url} target="_blank">Quiero colaborar</a>
+                )}
+
 
             </>
         ) : (
