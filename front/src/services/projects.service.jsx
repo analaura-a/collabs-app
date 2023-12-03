@@ -39,12 +39,18 @@ export function getProject(id) {
 
 //Crear una nueva convocatoria de proyecto (personal)
 export function createPersonalProject(projectData) {
-    return call({ uri: "/projects/personal", method: "POST", body: projectData })
+    return call({ uri: "projects/personal", method: "POST", body: projectData })
+}
+
+//Crear una nueva convocatoria de proyecto (open-source)
+export function createOpenSourceProject(projectData) {
+    return call({ uri: "projects/open-source", method: "POST", body: projectData })
 }
 
 export default {
     getProjects,
     getProjectsCreatedByUser,
     getProject,
-    createPersonalProject
+    createPersonalProject,
+    createOpenSourceProject
 }
