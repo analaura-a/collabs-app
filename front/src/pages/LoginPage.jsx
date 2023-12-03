@@ -25,7 +25,7 @@ const LoginPage = () => {
             .then(({ account, token }) => {
                 console.log(account, token)
                 localStorage.setItem("token", token)
-                navigate("/", { replace: true })
+                navigate("/explorar/proyectos", { replace: true })
             })
             .catch(err => setError(err.error.message))
     }

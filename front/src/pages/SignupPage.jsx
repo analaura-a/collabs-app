@@ -33,8 +33,8 @@ const SignupPage = () => {
         profile_pic: "https://static.vecteezy.com/system/resources/thumbnails/005/544/770/small/profile-icon-design-free-vector.jpg",
         name: name,
         last_name: lastname,
-        bio: "",
-        location: "",
+        bio: `${name} aún no ha completado su biografía.`,
+        location: "Sin especificar",
         professional_profile: ["Frontend Developer"],
         skills: ["Skill 1", "Skill 2", "Skill 3"],
         experience_level: "Principiante",
@@ -58,7 +58,7 @@ const SignupPage = () => {
                         createUser(userData)
                             .then((userCreated) => {
                                 console.log(userCreated)
-                                navigate("/", { replace: true })
+                                navigate("/explorar/proyectos", { replace: true })
                             })
                             .catch((err => console.log(err)))
 
@@ -130,7 +130,7 @@ const SignupPage = () => {
                         </div>
                     </div>
 
-                    <button type="submit" className="btn btn-primary">Crear cuenta</button>
+                    <button type="submit" className="btn btn-primary mb-5">Crear cuenta</button>
 
                 </form>
 
