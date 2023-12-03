@@ -8,7 +8,7 @@ const CreatePersonalProjectPage = () => {
 
     const [name, setName] = useState("")
     const [about, setAbout] = useState("")
-    const [availability, setAvailability] = useState("Baja")
+    const [availability, setAvailability] = useState("Baja (1-2 horas/día)")
     const [collaborators, setCollaborators] = useState([
         {
             profile: "UX/UI Designer",
@@ -124,10 +124,10 @@ const CreatePersonalProjectPage = () => {
                     <div className="mb-4">
                         <label className="form-label fw-semibold">Disponibilidad requerida (*)</label>
                         <select className="form-select" value={availability} onChange={onChangeAvailability}>
-                            <option value="Baja">Baja (1-2 horas/día)</option>
-                            <option value="Media">Media (3-4 horas/día)</option>
-                            <option value="Alta">Alta (5-6 horas/día)</option>
-                            <option value="Fulltime">Fulltime (+7 horas/día)</option>
+                            <option value="Baja (1-2 horas/día)">Baja (1-2 horas/día)</option>
+                            <option value="Media (3-4 horas/día)">Media (3-4 horas/día)</option>
+                            <option value="Alta (5-6 horas/día)">Alta (5-6 horas/día)</option>
+                            <option value="Fulltime (+7 horas/día)">Fulltime (+7 horas/día)</option>
                         </select>
                     </div>
 
