@@ -264,7 +264,7 @@ const CreatePersonalProjectPage = () => {
 
                                 </fieldset>
 
-                                <button type="submit" className="btn btn-primary mt-5">Crear convocatoria</button>
+                                <button type="submit" className="btn btn-primary mt-5 mb-5">Crear convocatoria</button>
                             </>
 
                         ) : (
@@ -325,7 +325,7 @@ const CreatePersonalProjectPage = () => {
 
                                 </fieldset>
 
-                                <button type="submit" className="btn btn-primary mt-5">Crear convocatoria</button>
+                                <button type="submit" className="btn btn-primary mt-5 mb-5">Crear convocatoria</button>
 
                             </>
 

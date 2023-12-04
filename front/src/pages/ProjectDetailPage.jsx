@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getProject } from "../services/projects.service";
 import { createRequest } from "../services/projects_requests";
 import { useUserProfile } from '../context/SessionContext'
@@ -11,6 +11,7 @@ const ProjectDetailPage = () => {
     const [selectedRole, setSelectedRole] = useState('');
 
     const userProfile = useUserProfile()
+    const navigate = useNavigate()
 
     const { id } = useParams();
 
@@ -42,6 +43,7 @@ const ProjectDetailPage = () => {
         createRequest(requestData)
             .then((request) => {
                 console.log(request)
+                navigate("/mis-postulaciones", { replace: true })
             })
             .catch(err => console.log(err))
 
